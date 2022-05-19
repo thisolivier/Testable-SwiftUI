@@ -10,14 +10,12 @@ import SwiftUI
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
 
-    let coin: Coin
-
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Coin: \(coin.symbol) - \(coin.name)")
+                Text("Coin: \(viewModel.symbol) - \(viewModel.name)")
                     .font(.title)
-                Text("Price: \(coin.price)")
+                Text("Price: \(viewModel.price)")
                 Text("History:")
                     .font(.title)
                     .padding(.vertical)
@@ -40,9 +38,8 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(
             viewModel: DetailViewModel(
                 coin: dummyCoin,
-                databaseLayer: CoinStore()
-            ),
-            coin: dummyCoin
+                coinStore: CoinStore()
+            )
         )
     }
 }
