@@ -8,7 +8,7 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
-    @Published var data: [String] = []
+    @Published var historyItems: [String] = []
     var symbol: String
     var name: String
     var price: String
@@ -25,7 +25,7 @@ class DetailViewModel: ObservableObject {
     
     func loadData(for coinId: String) {
         coinStore.retrieve(for: coinId) {[unowned self] data in
-            self.data = data
+            self.historyItems = data
             print(data.count)
         }
     }

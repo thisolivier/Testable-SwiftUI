@@ -19,7 +19,7 @@ struct DetailView: View {
                 Text("History:")
                     .font(.title)
                     .padding(.vertical)
-                ForEach(viewModel.data, id: \.self){ price in
+                ForEach(viewModel.historyItems, id: \.self){ price in
                     HStack{
                         Text(price)
                     }
