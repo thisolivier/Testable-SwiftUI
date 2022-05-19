@@ -9,16 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+
     var body: some View {
-        NavigationView{
-            ScrollView(.vertical){
+        NavigationView {
+            ScrollView(.vertical) {
                 LazyVStack{
                     topBar.padding()
-                    ForEach(viewModel.coins){ coin in
-                        NavigationLink{
+                    ForEach(viewModel.coins) { coin in
+                        NavigationLink {
                             Coordinator.shared.getDetailView(for: coin)
                         } label: {
-                            CoinView(coin: coin)
+                            CoinRow(coin: coin)
                                 .padding(4)
                         }
 
@@ -30,6 +31,7 @@ struct HomeView: View {
             .navigationBarHidden(true)
         }
     }
+
     var topBar: some View {
         HStack {
             Text("₿ Coinz App").font(.title)
@@ -67,46 +69,11 @@ struct HomeView: View {
     }
 }
 
-
-struct CoinView: View {
-    let coin: Coin
-    var body: some View {
-        HStack {
-            AsyncImage(
-                url: coin.iconUrl,
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 32, height: 32, alignment: .center)
-                },
-                placeholder: {
-                    ProgressView()
-                }
-            )
-                .padding()
-            VStack(spacing: 8) {
-                HStack {
-                    Text(coin.symbol)
-                    Spacer()
-                    Text(coin.price)
-                }
-                HStack{
-                    Text(coin.name)
-                    Spacer()
-                    Text(coin.change)
-                }
-            }
-        }
-        .padding(4)
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(6)
-        .shadow(radius: 16)
-    }
-    
-}
-
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: HomeViewModel(networkLayer: NetworkLayer(), databaseLayer: DatabaseLayer()))
+        HomeView(viewModel: HomeViewModel(
+            networkLayer: NetworkLayer(),
+            databaseLayer: DatabaseLayer()
+        ))
     }
 }

@@ -18,8 +18,6 @@ class DetailViewModel: ObservableObject {
         loadData()
     }
     
-    
-    
     func loadData() {
         databaseLayer.retrieve(for: coin.id){[unowned self] data in
             self.data = data

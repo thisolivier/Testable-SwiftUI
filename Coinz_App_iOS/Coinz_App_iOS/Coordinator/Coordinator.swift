@@ -12,10 +12,18 @@ final class Coordinator {
     private let databaseLayer: IDatabaseLayer = DatabaseLayer()
     
     func getHomeView() -> HomeView {
-        return HomeView(viewModel: HomeViewModel(networkLayer: NetworkLayer(),databaseLayer: databaseLayer))
+        return HomeView(viewModel: HomeViewModel(
+            networkLayer: NetworkLayer(),
+            databaseLayer: databaseLayer
+        ))
     }
     
     func getDetailView(for coin: Coin) -> DetailView {
-        return DetailView(viewModel: DetailViewModel(coin: coin, databaseLayer: databaseLayer), coin: coin)
+        return DetailView(
+            viewModel: DetailViewModel(
+                coin: coin,
+                databaseLayer: databaseLayer),
+            coin: coin
+        )
     }
 }
