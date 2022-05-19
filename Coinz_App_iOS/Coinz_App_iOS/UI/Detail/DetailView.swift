@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
+
     let coin: Coin
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -38,7 +40,7 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(
             viewModel: DetailViewModel(
                 coin: dummyCoin,
-                databaseLayer: DatabaseLayer()
+                databaseLayer: CoinStore()
             ),
             coin: dummyCoin
         )

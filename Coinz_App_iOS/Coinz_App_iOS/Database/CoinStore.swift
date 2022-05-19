@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol IDatabaseLayer {
+protocol CoinStorable {
     func save(data: [Coin])
     func retrieve(for uuid: String, completion: @escaping ([String]) -> Void)
 }
 
-
-class DatabaseLayer: IDatabaseLayer {
+class CoinStore: CoinStorable {
     func save(data: [Coin]) {
-        
         DispatchQueue.main.async {
             let defaults = UserDefaults.standard
             let date = Date()
@@ -32,6 +30,4 @@ class DatabaseLayer: IDatabaseLayer {
         let savedArray = defaults.object(forKey: id) as? [String] ?? [String]()
         completion(savedArray)
     }
-    
-    
 }

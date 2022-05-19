@@ -13,14 +13,14 @@ class HomeViewModel: ObservableObject {
     @Published var coins = [Coin]()
     private var cancellables: Set<AnyCancellable> = []
     private var networkLayer: INetworkLayer
-    private var databaseLayer: IDatabaseLayer
+    private var databaseLayer: CoinStorable
     
     private var allCoins = [Coin]()
     private var sortType: SortType = .price
     @Published var sortText: String = "Price"
     @Published var errorMessage: String = ""
     
-    init(networkLayer: INetworkLayer, databaseLayer: IDatabaseLayer){
+    init(networkLayer: INetworkLayer, databaseLayer: CoinStorable){
         self.networkLayer = networkLayer
         self.databaseLayer = databaseLayer
     }

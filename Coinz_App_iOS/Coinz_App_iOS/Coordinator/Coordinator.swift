@@ -9,7 +9,7 @@ import Foundation
 
 final class Coordinator {
     static let shared = Coordinator()
-    private let databaseLayer: IDatabaseLayer = DatabaseLayer()
+    private let databaseLayer: CoinStorable = CoinStore()
     
     func getHomeView() -> HomeView {
         return HomeView(viewModel: HomeViewModel(
