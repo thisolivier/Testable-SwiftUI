@@ -9,14 +9,13 @@ import Foundation
 import Combine
 
 class HomeViewModel: ObservableObject {
-    //MARK: - Properties
-    @Published var coins = [Coin]()
+
     private var cancellables: Set<AnyCancellable> = []
     private var networkLayer: INetworkLayer
     private var coinStore: CoinStorable
-    
     private var allCoins = [Coin]()
     private var sortType: SortType = .price
+    @Published var coins = [Coin]()
     @Published var sortText: String = "Price"
     @Published var errorMessage: String = ""
     
