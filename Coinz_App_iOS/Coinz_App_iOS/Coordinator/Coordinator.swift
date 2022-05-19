@@ -22,8 +22,8 @@ final class Coordinator {
         return DetailView(
             viewModel: DetailViewModel(
                 coin: coin,
-                coinStore: coinStore),
-            coin: coin
+                coinStore: coinStore
+            )
         )
     }
 }

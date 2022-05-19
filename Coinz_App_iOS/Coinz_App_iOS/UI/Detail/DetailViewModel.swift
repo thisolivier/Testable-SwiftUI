@@ -8,20 +8,26 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
-    @Published var data: [String] = []
-    private var coin: Coin
+    private var coinId: String
+    @Published var historyItems: [String] = []
+    var symbol: String
+    var name: String
+    var price: String
+
     private let coinStore: CoinStorable
     
     init(coin: Coin, coinStore: CoinStorable){
-        self.coin = coin
         self.coinStore = coinStore
+        self.coinId = coin.id
+        symbol = coin.symbol
+        name = coin.name
+        price = coin.price
         loadData()
     }
     
     func loadData() {
-        coinStore.retrieve(for: coin.id) {[unowned self] data in
-            self.data = data
-            print(data.count)
+        coinStore.retrieve(for: coinId) {[unowned self] data in
+            self.historyItems = data
         }
     }
 }
