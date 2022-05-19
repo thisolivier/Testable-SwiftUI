@@ -22,7 +22,7 @@ final class Coordinator {
         return DetailView(
             viewModel: DetailViewModel(
                 coin: coin,
-                databaseLayer: coinStore),
+                coinStore: coinStore),
             coin: coin
         )
     }
