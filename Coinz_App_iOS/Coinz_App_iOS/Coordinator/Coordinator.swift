@@ -9,12 +9,12 @@ import Foundation
 
 final class Coordinator {
     static let shared = Coordinator()
-    private let databaseLayer: CoinStorable = CoinStore()
+    private let coinStore: CoinStorable = CoinStore()
     
     func getHomeView() -> HomeView {
         return HomeView(viewModel: HomeViewModel(
             networkLayer: NetworkLayer(),
-            databaseLayer: databaseLayer
+            coinStore: coinStore
         ))
     }
     
@@ -22,7 +22,7 @@ final class Coordinator {
         return DetailView(
             viewModel: DetailViewModel(
                 coin: coin,
-                databaseLayer: databaseLayer),
+                databaseLayer: coinStore),
             coin: coin
         )
     }

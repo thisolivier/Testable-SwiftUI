@@ -13,19 +13,20 @@ class HomeViewModel: ObservableObject {
     @Published var coins = [Coin]()
     private var cancellables: Set<AnyCancellable> = []
     private var networkLayer: INetworkLayer
-    private var databaseLayer: CoinStorable
+    private var coinStore: CoinStorable
     
     private var allCoins = [Coin]()
     private var sortType: SortType = .price
     @Published var sortText: String = "Price"
     @Published var errorMessage: String = ""
     
-    init(networkLayer: INetworkLayer, databaseLayer: CoinStorable){
+    init(
+        networkLayer: INetworkLayer,
+        coinStore: CoinStorable
+    ){
         self.networkLayer = networkLayer
-        self.databaseLayer = databaseLayer
+        self.coinStore = coinStore
     }
-    
-   
     
     //MARK: - Helper functions
     func loadData() {
@@ -43,7 +44,7 @@ class HomeViewModel: ObservableObject {
                 print(coinsResponse.data.coins)
                 self.allCoins = coinsResponse.data.coins.map{ Coin.fromDTO(dto: $0)}
                 sortData(with: sortType)
-                databaseLayer.save(data: allCoins)
+                coinStore.save(data: allCoins)
             }
             .store(in: &cancellables)
     }
@@ -65,9 +66,7 @@ class HomeViewModel: ObservableObject {
             self.coins = allCoins.sorted(by: { $0.listedAt > $1.listedAt })
         }
     }
-    
 }
-
 
 enum SortType {
     case price, marketCap, change, listedAt
@@ -75,6 +74,6 @@ enum SortType {
 
 extension String {
     func toDouble() -> Double {
-        return Double(self) ?? 0.00
+        return Double(self) ?? 0.00 // TODO: Decode to a double in the Coin model object
     }
 }

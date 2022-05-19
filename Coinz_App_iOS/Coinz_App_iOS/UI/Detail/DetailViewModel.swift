@@ -10,16 +10,16 @@ import Foundation
 class DetailViewModel: ObservableObject {
     @Published var data: [String] = []
     private var coin: Coin
-    private let databaseLayer: CoinStorable
+    private let coinStore: CoinStorable
     
-    init(coin: Coin, databaseLayer: CoinStorable){
+    init(coin: Coin, coinStore: CoinStorable){
         self.coin = coin
-        self.databaseLayer = databaseLayer
+        self.coinStore = coinStore
         loadData()
     }
     
     func loadData() {
-        databaseLayer.retrieve(for: coin.id) {[unowned self] data in
+        coinStore.retrieve(for: coin.id) {[unowned self] data in
             self.data = data
             print(data.count)
         }
