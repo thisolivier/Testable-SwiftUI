@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+    weak var coordinator: HomeCoordinatorable?
 
     var body: some View {
         NavigationView {
@@ -17,12 +18,11 @@ struct HomeView: View {
                     topBar.padding()
                     ForEach(viewModel.coins) { coin in
                         NavigationLink {
-                            Coordinator.shared.getDetailView(for: coin)
+                            coordinator?.showDetails(for: coin)
                         } label: {
                             CoinRow(coin: coin)
                                 .padding(4)
                         }
-
                     }
                 }
             }.task {
@@ -71,9 +71,12 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: HomeViewModel(
-            networkLayer: NetworkLayer(),
-            coinStore: CoinStore()
-        ))
+        HomeView(
+            viewModel: HomeViewModel(
+                networkLayer: NetworkLayer(),
+                coinStore: CoinStore()
+            ),
+            coordinator: nil
+        )
     }
 }
