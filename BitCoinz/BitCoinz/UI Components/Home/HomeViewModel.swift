@@ -14,7 +14,7 @@ class HomeViewModel: ObservableObject {
     private var networkLayer: INetworkLayer
     private var coinStore: CoinStorable
     private var allCoins = [Coin]()
-    private var sortType: SortType
+    private var sortType: CoinSortType
     let title: String = "₿ Coinz App"
     @Published var coins = [Coin]()
     @Published var sortText: String
@@ -27,7 +27,7 @@ class HomeViewModel: ObservableObject {
         self.networkLayer = networkLayer
         self.coinStore = coinStore
         sortType = .price
-        sortText = SortType.price.rawValue
+        sortText = CoinSortType.price.rawValue
     }
     
     //MARK: - Helper functions
@@ -50,7 +50,7 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func sortData(with sortType: SortType) {
+    func sortData(with sortType: CoinSortType) {
         self.sortType = sortType
         switch sortType {
         case .price:
@@ -67,13 +67,6 @@ class HomeViewModel: ObservableObject {
             self.coins = allCoins.sorted(by: { $0.listedAt > $1.listedAt })
         }
     }
-}
-
-enum SortType: String, CaseIterable {
-    case price = "Price"
-    case marketCap = "Market Cap"
-    case change = "Change"
-    case listedAt = "Listed At"
 }
 
 extension String {

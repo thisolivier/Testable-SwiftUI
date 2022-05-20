@@ -22,7 +22,7 @@ struct HomeView: View {
                         } label: {
                             CoinRow(coin: coin)
                                 .padding(4)
-                        }
+                        }.accessibilityIdentifier("coinRow")
                     }
                 }
             }.task {
@@ -36,19 +36,20 @@ struct HomeView: View {
         HStack {
             Text(viewModel.title)
                 .font(.title)
+                .accessibilityIdentifier("appTitle")
             Spacer()
             Menu {
-                ForEach(SortType.allCases, id: \.self) { sortType in
+                ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
                         viewModel.sortData(with: sortType)
                     } label: {
                         Text(sortType.rawValue)
-                    }
+                    }.accessibilityIdentifier("coinFilterOption")
                 }
             } label: {
                 Text(viewModel.sortText)
             }
-
+            .accessibilityIdentifier("coinFilter")
         }
     }
 }
