@@ -11,9 +11,10 @@ Unit tests are implemented for successful and failing cases.
 ## Roadmap
 - [x] Review existing code and fix glaring obvious issues
 - [x] Test all view models
-- [ ] Add UITests
+- [x] Add UITests
 - [ ] Use Jordan Morgan's wrapper design to decouple VM implementations from UI
 - [ ] Separate use case (application business rules) from interface adapters (presenters)
+- [ ] Run mock server to facilitate full UI Testing
 - [ ] Add favorites feature with local persistence
 - [ ] Add image caching with local persistence
 - [ ] Add filtering by favorite
