@@ -23,6 +23,6 @@ struct CoinsDataDTO: Codable {
 }
 
 struct CoinsResponse: Codable {
-    let status: String
+    let status: String // Not currently used
     let data: CoinsDataDTO
 }

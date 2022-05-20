@@ -7,7 +7,7 @@
 
 import XCTest
 import Combine
-@testable import Coinz_App_iOS
+@testable import BitCoinz
 
 class HomeViewModelTests: XCTestCase {
 

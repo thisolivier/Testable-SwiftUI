@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+    weak var coordinator: HomeCoordinatorable?
 
     var body: some View {
         NavigationView {
@@ -17,12 +18,11 @@ struct HomeView: View {
                     topBar.padding()
                     ForEach(viewModel.coins) { coin in
                         NavigationLink {
-                            Coordinator.shared.getDetailView(for: coin)
+                            coordinator?.showDetails(for: coin)
                         } label: {
                             CoinRow(coin: coin)
                                 .padding(4)
-                        }
-
+                        }.accessibilityIdentifier("coinRow")
                     }
                 }
             }.task {
@@ -34,46 +34,34 @@ struct HomeView: View {
 
     var topBar: some View {
         HStack {
-            Text("₿ Coinz App").font(.title)
+            Text(viewModel.title)
+                .font(.title)
+                .accessibilityIdentifier("appTitle")
             Spacer()
             Menu {
-                Button {
-                    viewModel.sortData(with: SortType.price)
-                } label: {
-                    Text("Price")
+                ForEach(CoinSortType.allCases, id: \.self) { sortType in
+                    Button {
+                        viewModel.sortData(with: sortType)
+                    } label: {
+                        Text(sortType.rawValue)
+                    }.accessibilityIdentifier("coinFilterOption")
                 }
-                
-                Button {
-                    viewModel.sortData(with: SortType.marketCap)
-                } label: {
-                    Text("Market Cap")
-                }
-                
-                Button {
-                    viewModel.sortData(with: SortType.change)
-                } label: {
-                    Text("Change")
-                }
-
-                Button {
-                    viewModel.sortData(with: SortType.listedAt)
-                } label: {
-                    Text("Listed At")
-                }
-                
             } label: {
                 Text(viewModel.sortText)
             }
-
+            .accessibilityIdentifier("coinFilterMenu")
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: HomeViewModel(
-            networkLayer: NetworkLayer(),
-            coinStore: CoinStore()
-        ))
+        HomeView(
+            viewModel: HomeViewModel(
+                networkLayer: NetworkLayer(),
+                coinStore: CoinStore()
+            ),
+            coordinator: nil
+        )
     }
 }

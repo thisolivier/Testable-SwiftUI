@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct Coinz_App_iOSApp: App {
+struct BitCoinzApp: App {
+    let homeCoordinator: HomeCoordinatorable = HomeCoordinator()
+
     var body: some Scene {
         WindowGroup {
-            Coordinator.shared.getHomeView()
+            homeCoordinator.start()
         }
     }
 }

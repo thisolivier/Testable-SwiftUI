@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0903CDCB2837A492007F4521 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDCA2837A492007F4521 /* View+Extensions.swift */; };
+		0903CDCF2837AB37007F4521 /* Coordinatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDCE2837AB37007F4521 /* Coordinatorable.swift */; };
+		090CD2AC2837DAF1007FDCDD /* CoinSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2AB2837DAF1007FDCDD /* CoinSortType.swift */; };
+		090CD2AD283801EC007FDCDD /* HomeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDD62837CC71007F4521 /* HomeViewTests.swift */; };
 		09D7EDE928365B47005671CE /* CoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDE828365B47005671CE /* CoinRow.swift */; };
 		09D7EDEC28366341005671CE /* CoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDEB28366341005671CE /* CoinTests.swift */; };
 		09D7EDEE28366AED005671CE /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDED28366AED005671CE /* DetailViewModelTests.swift */; };
 		9437D8802778EFE2006ECABA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D87F2778EFE2006ECABA /* DetailView.swift */; };
 		9437D8822778F003006ECABA /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D8812778F003006ECABA /* DetailViewModel.swift */; };
-		9437D8852778F259006ECABA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D8842778F259006ECABA /* Coordinator.swift */; };
+		9437D8852778F259006ECABA /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D8842778F259006ECABA /* HomeCoordinator.swift */; };
 		9437D88D2778FA26006ECABA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D88C2778FA26006ECABA /* HomeViewModelTests.swift */; };
 		9437D895277901C2006ECABA /* CoinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D894277901C2006ECABA /* CoinStore.swift */; };
-		94B51FE22778D20E00263604 /* Coinz_App_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */; };
+		94B51FE22778D20E00263604 /* BitCoinzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FE12778D20E00263604 /* BitCoinzApp.swift */; };
 		94B51FE62778D20F00263604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B51FE52778D20F00263604 /* Assets.xcassets */; };
 		94B51FE92778D20F00263604 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B51FE82778D20F00263604 /* Preview Assets.xcassets */; };
 		94B51FF52778D58C00263604 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FF42778D58C00263604 /* HomeView.swift */; };
@@ -28,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0903CDDA2837CC71007F4521 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94B51FD62778D20E00263604 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94B51FDD2778D20E00263604;
+			remoteInfo = BitCoinz;
+		};
 		9437D88E2778FA26006ECABA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94B51FD62778D20E00263604 /* Project object */;
@@ -38,17 +49,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0903CDCA2837A492007F4521 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		0903CDCE2837AB37007F4521 /* Coordinatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatorable.swift; sourceTree = "<group>"; };
+		0903CDD42837CC71007F4521 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0903CDD62837CC71007F4521 /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
+		090CD2AB2837DAF1007FDCDD /* CoinSortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinSortType.swift; sourceTree = "<group>"; };
 		09D7EDE828365B47005671CE /* CoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRow.swift; sourceTree = "<group>"; };
 		09D7EDEB28366341005671CE /* CoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTests.swift; sourceTree = "<group>"; };
 		09D7EDED28366AED005671CE /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		9437D87F2778EFE2006ECABA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9437D8812778F003006ECABA /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		9437D8842778F259006ECABA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9437D8842778F259006ECABA /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		9437D88A2778FA25006ECABA /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9437D88C2778FA26006ECABA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9437D894277901C2006ECABA /* CoinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStore.swift; sourceTree = "<group>"; };
-		94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinz_App_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coinz_App_iOSApp.swift; sourceTree = "<group>"; };
+		94B51FDE2778D20E00263604 /* BitCoinz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B51FE12778D20E00263604 /* BitCoinzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinzApp.swift; sourceTree = "<group>"; };
 		94B51FE52778D20F00263604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94B51FE82778D20F00263604 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		94B51FF42778D58C00263604 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -61,6 +77,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0903CDD12837CC71007F4521 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9437D8872778FA25006ECABA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,22 +101,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9437D8832778F24E006ECABA /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				9437D8842778F259006ECABA /* Coordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		9437D88B2778FA26006ECABA /* Unit Tests */ = {
+		0903CDC528379F19007F4521 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
 				09D7EDED28366AED005671CE /* DetailViewModelTests.swift */,
 				9437D88C2778FA26006ECABA /* HomeViewModelTests.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		0903CDC628379F66007F4521 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				09D7EDEB28366341005671CE /* CoinTests.swift */,
 			);
-			path = "Unit Tests";
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0903CDC92837A47E007F4521 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0903CDCA2837A492007F4521 /* View+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0903CDD52837CC71007F4521 /* UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0903CDD62837CC71007F4521 /* HomeViewTests.swift */,
+			);
+			path = "UI Tests";
+			sourceTree = "<group>";
+		};
+		9437D8832778F24E006ECABA /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0903CDCE2837AB37007F4521 /* Coordinatorable.swift */,
+				9437D8842778F259006ECABA /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		9437D88B2778FA26006ECABA /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0903CDC628379F66007F4521 /* Model */,
+				0903CDC528379F19007F4521 /* UI Components */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		9437D893277901B0006ECABA /* Database */ = {
@@ -107,8 +163,9 @@
 		94B51FD52778D20E00263604 = {
 			isa = PBXGroup;
 			children = (
-				94B51FE02778D20E00263604 /* Coinz_App_iOS */,
-				9437D88B2778FA26006ECABA /* Unit Tests */,
+				94B51FE02778D20E00263604 /* BitCoinz */,
+				9437D88B2778FA26006ECABA /* Tests */,
+				0903CDD52837CC71007F4521 /* UI Tests */,
 				94B51FDF2778D20E00263604 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,25 +173,27 @@
 		94B51FDF2778D20E00263604 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */,
+				94B51FDE2778D20E00263604 /* BitCoinz.app */,
 				9437D88A2778FA25006ECABA /* Unit Tests.xctest */,
+				0903CDD42837CC71007F4521 /* UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94B51FE02778D20E00263604 /* Coinz_App_iOS */ = {
+		94B51FE02778D20E00263604 /* BitCoinz */ = {
 			isa = PBXGroup;
 			children = (
-				94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */,
+				94B51FE12778D20E00263604 /* BitCoinzApp.swift */,
 				9437D893277901B0006ECABA /* Database */,
 				9437D8832778F24E006ECABA /* Coordinator */,
 				94B51FF82778D5F100263604 /* Model */,
 				94B51FF02778D54400263604 /* Network */,
-				94B51FF12778D56500263604 /* UI */,
+				94B51FF12778D56500263604 /* UI Components */,
 				94B51FE52778D20F00263604 /* Assets.xcassets */,
+				0903CDC92837A47E007F4521 /* Helpers */,
 				94B51FE72778D20F00263604 /* Preview Content */,
 			);
-			path = Coinz_App_iOS;
+			path = BitCoinz;
 			sourceTree = "<group>";
 		};
 		94B51FE72778D20F00263604 /* Preview Content */ = {
@@ -155,13 +214,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		94B51FF12778D56500263604 /* UI */ = {
+		94B51FF12778D56500263604 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
 				94B51FF32778D57500263604 /* Detail */,
 				94B51FF22778D56E00263604 /* Home */,
 			);
-			path = UI;
+			path = "UI Components";
 			sourceTree = "<group>";
 		};
 		94B51FF22778D56E00263604 /* Home */ = {
@@ -204,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				94B51FFD2778D64300263604 /* Coin.swift */,
+				090CD2AB2837DAF1007FDCDD /* CoinSortType.swift */,
 			);
 			path = "Model Objects";
 			sourceTree = "<group>";
@@ -211,6 +271,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0903CDD32837CC71007F4521 /* UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0903CDDC2837CC71007F4521 /* Build configuration list for PBXNativeTarget "UI Tests" */;
+			buildPhases = (
+				0903CDD02837CC71007F4521 /* Sources */,
+				0903CDD12837CC71007F4521 /* Frameworks */,
+				0903CDD22837CC71007F4521 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0903CDDB2837CC71007F4521 /* PBXTargetDependency */,
+			);
+			name = "UI Tests";
+			productName = "UI Tests";
+			productReference = 0903CDD42837CC71007F4521 /* UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9437D8892778FA25006ECABA /* Unit Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9437D8902778FA26006ECABA /* Build configuration list for PBXNativeTarget "Unit Tests" */;
@@ -229,9 +307,9 @@
 			productReference = 9437D88A2778FA25006ECABA /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		94B51FDD2778D20E00263604 /* Coinz_App_iOS */ = {
+		94B51FDD2778D20E00263604 /* BitCoinz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "Coinz_App_iOS" */;
+			buildConfigurationList = 94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "BitCoinz" */;
 			buildPhases = (
 				94B51FDA2778D20E00263604 /* Sources */,
 				94B51FDB2778D20E00263604 /* Frameworks */,
@@ -241,9 +319,9 @@
 			);
 			dependencies = (
 			);
-			name = Coinz_App_iOS;
+			name = BitCoinz;
 			productName = Coinz_App_iOS;
-			productReference = 94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */;
+			productReference = 94B51FDE2778D20E00263604 /* BitCoinz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -253,9 +331,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					0903CDD32837CC71007F4521 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 94B51FDD2778D20E00263604;
+					};
 					9437D8892778FA25006ECABA = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 94B51FDD2778D20E00263604;
@@ -265,7 +347,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94B51FD92778D20E00263604 /* Build configuration list for PBXProject "Coinz_App_iOS" */;
+			buildConfigurationList = 94B51FD92778D20E00263604 /* Build configuration list for PBXProject "BitCoinz" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -278,13 +360,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94B51FDD2778D20E00263604 /* Coinz_App_iOS */,
+				94B51FDD2778D20E00263604 /* BitCoinz */,
 				9437D8892778FA25006ECABA /* Unit Tests */,
+				0903CDD32837CC71007F4521 /* UI Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0903CDD22837CC71007F4521 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9437D8882778FA25006ECABA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +394,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0903CDD02837CC71007F4521 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				090CD2AD283801EC007FDCDD /* HomeViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9437D8862778FA25006ECABA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,16 +416,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0903CDCF2837AB37007F4521 /* Coordinatorable.swift in Sources */,
 				94B520002778D67800263604 /* RequestError.swift in Sources */,
 				94B51FFE2778D64300263604 /* Coin.swift in Sources */,
 				94B51FF52778D58C00263604 /* HomeView.swift in Sources */,
 				9437D8802778EFE2006ECABA /* DetailView.swift in Sources */,
+				090CD2AC2837DAF1007FDCDD /* CoinSortType.swift in Sources */,
 				94B520042778D6B900263604 /* NetworkLayer+Extension.swift in Sources */,
 				09D7EDE928365B47005671CE /* CoinRow.swift in Sources */,
 				94B520022778D69700263604 /* NetworkLayer.swift in Sources */,
-				94B51FE22778D20E00263604 /* Coinz_App_iOSApp.swift in Sources */,
-				9437D8852778F259006ECABA /* Coordinator.swift in Sources */,
+				94B51FE22778D20E00263604 /* BitCoinzApp.swift in Sources */,
+				9437D8852778F259006ECABA /* HomeCoordinator.swift in Sources */,
 				94B51FFC2778D61E00263604 /* CoinsResponse.swift in Sources */,
+				0903CDCB2837A492007F4521 /* View+Extensions.swift in Sources */,
 				9437D8822778F003006ECABA /* DetailViewModel.swift in Sources */,
 				94B51FF72778D5A000263604 /* HomeViewModel.swift in Sources */,
 				9437D895277901C2006ECABA /* CoinStore.swift in Sources */,
@@ -337,21 +438,62 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0903CDDB2837CC71007F4521 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94B51FDD2778D20E00263604 /* BitCoinz */;
+			targetProxy = 0903CDDA2837CC71007F4521 /* PBXContainerItemProxy */;
+		};
 		9437D88F2778FA26006ECABA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94B51FDD2778D20E00263604 /* Coinz_App_iOS */;
+			target = 94B51FDD2778D20E00263604 /* BitCoinz */;
 			targetProxy = 9437D88E2778FA26006ECABA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0903CDDD2837CC71007F4521 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thisolivier.bitcoinz.UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitCoinz;
+			};
+			name = Debug;
+		};
+		0903CDDE2837CC71007F4521 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thisolivier.bitcoinz.UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitCoinz;
+			};
+			name = Release;
+		};
 		9437D8912778FA26006ECABA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Unit-Tests";
@@ -359,7 +501,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinz_App_iOS.app/Coinz_App_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinz.app/BitCoinz";
 			};
 			name = Debug;
 		};
@@ -369,7 +511,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Unit-Tests";
@@ -377,7 +519,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinz_App_iOS.app/Coinz_App_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinz.app/BitCoinz";
 			};
 			name = Release;
 		};
@@ -504,8 +646,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Coinz_App_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_ASSET_PATHS = "\"BitCoinz/Preview Content\"";
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -518,8 +660,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Coinz-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superolivier.bitcoinz;
+				PRODUCT_NAME = BitCoinz;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -533,8 +675,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Coinz_App_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_ASSET_PATHS = "\"BitCoinz/Preview Content\"";
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,8 +689,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Coinz-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superolivier.bitcoinz;
+				PRODUCT_NAME = BitCoinz;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -558,6 +700,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0903CDDC2837CC71007F4521 /* Build configuration list for PBXNativeTarget "UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0903CDDD2837CC71007F4521 /* Debug */,
+				0903CDDE2837CC71007F4521 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9437D8902778FA26006ECABA /* Build configuration list for PBXNativeTarget "Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -567,7 +718,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B51FD92778D20E00263604 /* Build configuration list for PBXProject "Coinz_App_iOS" */ = {
+		94B51FD92778D20E00263604 /* Build configuration list for PBXProject "BitCoinz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B51FEA2778D20F00263604 /* Debug */,
@@ -576,7 +727,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "Coinz_App_iOS" */ = {
+		94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "BitCoinz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B51FED2778D20F00263604 /* Debug */,

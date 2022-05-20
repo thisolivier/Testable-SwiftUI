@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/olivier/Sites/Testable-SwiftUI/Coinz_App_iOS/BitCoinz.xcodeproj">
    </FileRef>
 </Workspace>
