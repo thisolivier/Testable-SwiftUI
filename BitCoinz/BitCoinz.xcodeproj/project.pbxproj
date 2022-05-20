@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0903CDCB2837A492007F4521 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDCA2837A492007F4521 /* View+Extensions.swift */; };
-		0903CDCD2837AA09007F4521 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDCC2837AA09007F4521 /* Environment.swift */; };
 		0903CDCF2837AB37007F4521 /* Coordinatorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDCE2837AB37007F4521 /* Coordinatorable.swift */; };
 		090CD2AC2837DAF1007FDCDD /* CoinSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2AB2837DAF1007FDCDD /* CoinSortType.swift */; };
 		090CD2AD283801EC007FDCDD /* HomeViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0903CDD62837CC71007F4521 /* HomeViewTests.swift */; };
@@ -51,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		0903CDCA2837A492007F4521 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		0903CDCC2837AA09007F4521 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		0903CDCE2837AB37007F4521 /* Coordinatorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatorable.swift; sourceTree = "<group>"; };
 		0903CDD42837CC71007F4521 /* UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0903CDD62837CC71007F4521 /* HomeViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTests.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				94B51FE12778D20E00263604 /* BitCoinzApp.swift */,
-				0903CDCC2837AA09007F4521 /* Environment.swift */,
 				9437D893277901B0006ECABA /* Database */,
 				9437D8832778F24E006ECABA /* Coordinator */,
 				94B51FF82778D5F100263604 /* Model */,
@@ -433,7 +430,6 @@
 				94B51FFC2778D61E00263604 /* CoinsResponse.swift in Sources */,
 				0903CDCB2837A492007F4521 /* View+Extensions.swift in Sources */,
 				9437D8822778F003006ECABA /* DetailViewModel.swift in Sources */,
-				0903CDCD2837AA09007F4521 /* Environment.swift in Sources */,
 				94B51FF72778D5A000263604 /* HomeViewModel.swift in Sources */,
 				9437D895277901C2006ECABA /* CoinStore.swift in Sources */,
 			);
