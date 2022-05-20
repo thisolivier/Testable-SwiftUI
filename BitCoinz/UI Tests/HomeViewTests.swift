@@ -31,18 +31,23 @@ class HomeViewTests: XCTestCase {
         XCTAssertEqual(app.buttons["coinFilterMenu"].label, expectedMenuLabel)
     }
 
+    func test_tapMenu() {
+        // Expectation
+        let expectedFilterCount = 4
+
+        // Action
+        app.launch()
+        app.buttons["coinFilterMenu"].firstMatch.tap()
+
+        // Assertion
+        XCTAssertEqual(app.buttons.matching(identifier: "coinFilterOption").count, expectedFilterCount)
+    }
+
     func test_coinsListed() {
         // we need to mock the server for this
     }
 
-    func test_tapMenu() {
-        let expectedFilterCount = 4
-        app.launch()
-        app.buttons["coinFiler"].tap()
-        let filterButtons = app.buttons["coinFilter"]
-    }
-
     func test_tapCoin() {
-
+        // need to mock the server for this
     }
 }
