@@ -15,7 +15,7 @@
 		9437D8852778F259006ECABA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D8842778F259006ECABA /* Coordinator.swift */; };
 		9437D88D2778FA26006ECABA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D88C2778FA26006ECABA /* HomeViewModelTests.swift */; };
 		9437D895277901C2006ECABA /* CoinStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9437D894277901C2006ECABA /* CoinStore.swift */; };
-		94B51FE22778D20E00263604 /* Coinz_App_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */; };
+		94B51FE22778D20E00263604 /* BitCoinzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FE12778D20E00263604 /* BitCoinzApp.swift */; };
 		94B51FE62778D20F00263604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B51FE52778D20F00263604 /* Assets.xcassets */; };
 		94B51FE92778D20F00263604 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B51FE82778D20F00263604 /* Preview Assets.xcassets */; };
 		94B51FF52778D58C00263604 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B51FF42778D58C00263604 /* HomeView.swift */; };
@@ -47,8 +47,8 @@
 		9437D88A2778FA25006ECABA /* Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9437D88C2778FA26006ECABA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		9437D894277901C2006ECABA /* CoinStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStore.swift; sourceTree = "<group>"; };
-		94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinz_App_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coinz_App_iOSApp.swift; sourceTree = "<group>"; };
+		94B51FDE2778D20E00263604 /* BitCoinz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94B51FE12778D20E00263604 /* BitCoinzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinzApp.swift; sourceTree = "<group>"; };
 		94B51FE52778D20F00263604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94B51FE82778D20F00263604 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		94B51FF42778D58C00263604 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		94B51FD52778D20E00263604 = {
 			isa = PBXGroup;
 			children = (
-				94B51FE02778D20E00263604 /* Coinz_App_iOS */,
+				94B51FE02778D20E00263604 /* BitCoinz */,
 				9437D88B2778FA26006ECABA /* Unit Tests */,
 				94B51FDF2778D20E00263604 /* Products */,
 			);
@@ -116,16 +116,16 @@
 		94B51FDF2778D20E00263604 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */,
+				94B51FDE2778D20E00263604 /* BitCoinz.app */,
 				9437D88A2778FA25006ECABA /* Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94B51FE02778D20E00263604 /* Coinz_App_iOS */ = {
+		94B51FE02778D20E00263604 /* BitCoinz */ = {
 			isa = PBXGroup;
 			children = (
-				94B51FE12778D20E00263604 /* Coinz_App_iOSApp.swift */,
+				94B51FE12778D20E00263604 /* BitCoinzApp.swift */,
 				9437D893277901B0006ECABA /* Database */,
 				9437D8832778F24E006ECABA /* Coordinator */,
 				94B51FF82778D5F100263604 /* Model */,
@@ -134,7 +134,7 @@
 				94B51FE52778D20F00263604 /* Assets.xcassets */,
 				94B51FE72778D20F00263604 /* Preview Content */,
 			);
-			path = Coinz_App_iOS;
+			path = BitCoinz;
 			sourceTree = "<group>";
 		};
 		94B51FE72778D20F00263604 /* Preview Content */ = {
@@ -229,9 +229,9 @@
 			productReference = 9437D88A2778FA25006ECABA /* Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		94B51FDD2778D20E00263604 /* Coinz_App_iOS */ = {
+		94B51FDD2778D20E00263604 /* BitCoinz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "Coinz_App_iOS" */;
+			buildConfigurationList = 94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "BitCoinz" */;
 			buildPhases = (
 				94B51FDA2778D20E00263604 /* Sources */,
 				94B51FDB2778D20E00263604 /* Frameworks */,
@@ -241,9 +241,9 @@
 			);
 			dependencies = (
 			);
-			name = Coinz_App_iOS;
+			name = BitCoinz;
 			productName = Coinz_App_iOS;
-			productReference = 94B51FDE2778D20E00263604 /* Coinz_App_iOS.app */;
+			productReference = 94B51FDE2778D20E00263604 /* BitCoinz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94B51FD92778D20E00263604 /* Build configuration list for PBXProject "Coinz_App_iOS" */;
+			buildConfigurationList = 94B51FD92778D20E00263604 /* Build configuration list for PBXProject "BitCoinz" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -278,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94B51FDD2778D20E00263604 /* Coinz_App_iOS */,
+				94B51FDD2778D20E00263604 /* BitCoinz */,
 				9437D8892778FA25006ECABA /* Unit Tests */,
 			);
 		};
@@ -325,7 +325,7 @@
 				94B520042778D6B900263604 /* NetworkLayer+Extension.swift in Sources */,
 				09D7EDE928365B47005671CE /* CoinRow.swift in Sources */,
 				94B520022778D69700263604 /* NetworkLayer.swift in Sources */,
-				94B51FE22778D20E00263604 /* Coinz_App_iOSApp.swift in Sources */,
+				94B51FE22778D20E00263604 /* BitCoinzApp.swift in Sources */,
 				9437D8852778F259006ECABA /* Coordinator.swift in Sources */,
 				94B51FFC2778D61E00263604 /* CoinsResponse.swift in Sources */,
 				9437D8822778F003006ECABA /* DetailViewModel.swift in Sources */,
@@ -339,7 +339,7 @@
 /* Begin PBXTargetDependency section */
 		9437D88F2778FA26006ECABA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 94B51FDD2778D20E00263604 /* Coinz_App_iOS */;
+			target = 94B51FDD2778D20E00263604 /* BitCoinz */;
 			targetProxy = 9437D88E2778FA26006ECABA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -351,7 +351,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Unit-Tests";
@@ -359,7 +359,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinz_App_iOS.app/Coinz_App_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinz.app/BitCoinz";
 			};
 			name = Debug;
 		};
@@ -369,7 +369,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Unit-Tests";
@@ -377,7 +377,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinz_App_iOS.app/Coinz_App_iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BitCoinz.app/BitCoinz";
 			};
 			name = Release;
 		};
@@ -504,8 +504,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Coinz_App_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_ASSET_PATHS = "\"BitCoinz/Preview Content\"";
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -518,8 +518,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Coinz-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superolivier.bitcoinz;
+				PRODUCT_NAME = BitCoinz;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -533,8 +533,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Coinz_App_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 6QHU56UTR8;
+				DEVELOPMENT_ASSET_PATHS = "\"BitCoinz/Preview Content\"";
+				DEVELOPMENT_TEAM = CNHB9B5GX6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,8 +547,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.burhan.Coinz-App-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.superolivier.bitcoinz;
+				PRODUCT_NAME = BitCoinz;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -567,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B51FD92778D20E00263604 /* Build configuration list for PBXProject "Coinz_App_iOS" */ = {
+		94B51FD92778D20E00263604 /* Build configuration list for PBXProject "BitCoinz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B51FEA2778D20F00263604 /* Debug */,
@@ -576,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "Coinz_App_iOS" */ = {
+		94B51FEC2778D20F00263604 /* Build configuration list for PBXNativeTarget "BitCoinz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94B51FED2778D20F00263604 /* Debug */,
