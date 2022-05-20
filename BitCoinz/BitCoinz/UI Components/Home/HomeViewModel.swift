@@ -14,9 +14,10 @@ class HomeViewModel: ObservableObject {
     private var networkLayer: INetworkLayer
     private var coinStore: CoinStorable
     private var allCoins = [Coin]()
-    private var sortType: SortType = .price
+    private var sortType: SortType
+    let title: String = "₿ Coinz App"
     @Published var coins = [Coin]()
-    @Published var sortText: String = "Price"
+    @Published var sortText: String
     @Published var errorMessage: String = ""
     
     init(
@@ -25,6 +26,8 @@ class HomeViewModel: ObservableObject {
     ){
         self.networkLayer = networkLayer
         self.coinStore = coinStore
+        sortType = .price
+        sortText = SortType.price.rawValue
     }
     
     //MARK: - Helper functions
@@ -32,7 +35,6 @@ class HomeViewModel: ObservableObject {
         networkLayer.getCoins()
             .sink { completion in
                 switch completion {
-                    
                 case .finished:
                     break
                 case let .failure(error):
@@ -52,23 +54,26 @@ class HomeViewModel: ObservableObject {
         self.sortType = sortType
         switch sortType {
         case .price:
-            self.sortText = "Price"
+            self.sortText = sortType.rawValue
             self.coins = allCoins.sorted(by: { $0.price.toDouble() > $1.price.toDouble() })
         case .marketCap:
-            self.sortText = "Market Cap"
+            self.sortText = sortType.rawValue
             self.coins = allCoins.sorted(by: { $0.marketCap.toDouble() > $1.marketCap.toDouble() })
         case .change:
-            self.sortText = "Change"
+            self.sortText = sortType.rawValue
             self.coins = allCoins.sorted(by: { $0.change.toDouble() > $1.change.toDouble() })
         case .listedAt:
-            self.sortText = "Listed At"
+            self.sortText = sortType.rawValue
             self.coins = allCoins.sorted(by: { $0.listedAt > $1.listedAt })
         }
     }
 }
 
-enum SortType {
-    case price, marketCap, change, listedAt
+enum SortType: String, CaseIterable {
+    case price = "Price"
+    case marketCap = "Market Cap"
+    case change = "Change"
+    case listedAt = "Listed At"
 }
 
 extension String {

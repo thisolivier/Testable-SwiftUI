@@ -34,33 +34,17 @@ struct HomeView: View {
 
     var topBar: some View {
         HStack {
-            Text("₿ Coinz App").font(.title)
+            Text(viewModel.title)
+                .font(.title)
             Spacer()
             Menu {
-                Button {
-                    viewModel.sortData(with: SortType.price)
-                } label: {
-                    Text("Price")
+                ForEach(SortType.allCases, id: \.self) { sortType in
+                    Button {
+                        viewModel.sortData(with: sortType)
+                    } label: {
+                        Text(sortType.rawValue)
+                    }
                 }
-                
-                Button {
-                    viewModel.sortData(with: SortType.marketCap)
-                } label: {
-                    Text("Market Cap")
-                }
-                
-                Button {
-                    viewModel.sortData(with: SortType.change)
-                } label: {
-                    Text("Change")
-                }
-
-                Button {
-                    viewModel.sortData(with: SortType.listedAt)
-                } label: {
-                    Text("Listed At")
-                }
-                
             } label: {
                 Text(viewModel.sortText)
             }

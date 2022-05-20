@@ -38,10 +38,7 @@ class NetworkLayer: INetworkLayer {
         
         return URLSession.shared.dataTaskPublisher(for: request)
             .retry(3)
-            .map{
-                print(String(data: $0.data, encoding: .utf8) as Any)
-                return $0.data
-            }
+            .map { $0.data }
             .decode(type: NetworkModel.self, decoder: decoder)
             .receive(on: RunLoop.main)
             .mapError{_ in return .apiError}

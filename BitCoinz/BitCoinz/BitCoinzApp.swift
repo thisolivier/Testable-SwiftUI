@@ -13,7 +13,7 @@ struct BitCoinzApp: App {
 
     var body: some Scene {
         WindowGroup {
-            homeCoordinator.start()
+            Environment.rootCoodinator.start()
         }
     }
 }

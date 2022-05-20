@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-protocol HomeCoordinatorable: AnyObject {
-    func start() -> AnyView
+protocol HomeCoordinatorable: Coordinatorable {
     func showDetails(for: Coin) -> AnyView
 }
 
