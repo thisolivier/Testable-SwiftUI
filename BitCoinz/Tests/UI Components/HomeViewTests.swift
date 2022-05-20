@@ -13,9 +13,11 @@ import SwiftUI
 class HomeViewTests: XCTestCase {
 
     var app: XCUIApplication!
+    var mockCoordinator: MockCoordinator!
 
     override func setUp() {
-        Environment.rootCoodinator = MockCoordinator()
+        mockCoordinator = MockCoordinator()
+        Environment.rootCoodinator = mockCoordinator
         app = XCUIApplication()
     }
 
@@ -25,6 +27,8 @@ class HomeViewTests: XCTestCase {
 
     func test_showsTitleAndPrice() {
         app.launch()
+        let expectedAppTitle = mockCoordinator.mockViewModel.title
+        XCTAssertTrue(app.label.)
     }
 }
 
