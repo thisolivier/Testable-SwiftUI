@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+protocol HomeFlowDelegate: AnyObject {
+    func showDetails(for: Coin) -> AnyView
+}
+
 struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
-    weak var coordinator: HomeCoordinatorable?
+    weak var flowDelegate: HomeFlowDelegate?
 
     var body: some View {
         NavigationView {
@@ -18,7 +22,7 @@ struct HomeView: View {
                     topBar.padding()
                     ForEach(viewModel.coins) { coin in
                         NavigationLink {
-                            coordinator?.showDetails(for: coin)
+                            flowDelegate?.showDetails(for: coin)
                         } label: {
                             CoinRow(coin: coin)
                                 .padding(4)
@@ -58,10 +62,9 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(
             viewModel: HomeViewModel(
-                networkLayer: NetworkLayer(),
-                coinStore: CoinStore()
-            ),
-            coordinator: nil
+                coinProvider: CoinProvider(),
+                coinPriceStore: CoinPriceStore()
+            )
         )
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RequestError: Error, CustomNSError {
+enum NetworkError: Error, CustomNSError {
     
     case apiError
     case invalidEndpoint

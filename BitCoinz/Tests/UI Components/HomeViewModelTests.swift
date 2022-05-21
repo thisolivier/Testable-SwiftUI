@@ -44,19 +44,17 @@ class HomeViewModelTests: XCTestCase {
     
     func test_loadData_showErrorWhenNetworkFails() {
         // GIVEN: that we have test network layer that returns some coins
-        let networkLayer: INetworkLayer = TestFailingNetworkLayer(
-            response: RequestError.apiError
-        )
+        let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .failure(NetworkError.apiError))
         let sut = HomeViewModel(
-            networkLayer: networkLayer,
-            coinStore: coinStore
+            coinProvider: mockCoinProvider,
+            coinPriceStore: coinStore
         )
         
         // WHEN: HomeViewModel's loadData() is called
         sut.loadData()
         
         // THEN: HomeViewModel's coins should be same as returned data
-        XCTAssertEqual(RequestError.apiError.localizedDescription, sut.errorMessage)
+        XCTAssertEqual(NetworkError.apiError.localizedDescription, sut.errorMessage)
     }
 
     // MARK: - Helper Functions
@@ -66,16 +64,16 @@ class HomeViewModelTests: XCTestCase {
             status: "success",
             data: CoinsDataDTO(coins: dummyData(count: coinCount))
         )
-        let networkLayer: INetworkLayer = TestNetworkLayer(response: coinsResponse)
+        let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .success(coinsResponse))
         return HomeViewModel(
-            networkLayer: networkLayer,
-            coinStore: coinStore
+            coinProvider: mockCoinProvider,
+            coinPriceStore: coinStore
         )
     }
 }
 
 // MARK: - A mock coin store
-private class MockCoinStore: CoinStorable {
+private class MockCoinStore: CoinPriceStorable {
     var coinsSaved: [Coin]?
 
     func save(data: [Coin]) {
@@ -88,32 +86,24 @@ private class MockCoinStore: CoinStorable {
 }
 
 // MARK: - Network layer that returns data
-private class TestNetworkLayer: INetworkLayer {
-    let response: CoinsResponse
+private class TestCoinProvider: CoinProvidable {
+    let response: Result<CoinsResponse, NetworkError>
     
-    init(response: CoinsResponse){
+    init(response: Result<CoinsResponse, NetworkError>){
         self.response = response
     }
     
-    func getCoins() -> AnyPublisher<CoinsResponse, RequestError> {
-        return Result<CoinsResponse, RequestError>
-            .Publisher(.success(response))
-            .eraseToAnyPublisher()
-    }
-}
-
-// MARK: - Network layer that fails.
-private class TestFailingNetworkLayer: INetworkLayer {
-    let response: RequestError
-    
-    init(response: RequestError){
-        self.response = response
-    }
-    
-    func getCoins() -> AnyPublisher<CoinsResponse, RequestError> {
-        return Result<CoinsResponse, RequestError>
-            .Publisher(.failure(response))
-            .eraseToAnyPublisher()
+    func getCoins() -> AnyPublisher<CoinsResponse, NetworkError> {
+        switch response {
+        case .success(let response):
+            return Result<CoinsResponse, NetworkError>
+                .Publisher(.success(response))
+                .eraseToAnyPublisher()
+        case .failure(let error):
+            return Result<CoinsResponse, NetworkError>
+                .Publisher(.failure(error))
+                .eraseToAnyPublisher()
+        }
     }
 }
 

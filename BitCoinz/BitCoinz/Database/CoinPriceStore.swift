@@ -7,12 +7,15 @@
 
 import Foundation
 
-protocol CoinStorable {
+protocol CoinPriceStorable {
+    /** Will store to disk the date queried, and coin price when queried, for all coins passed in. Appends to existing data. **/
     func save(data: [Coin])
+    /** Retreives from disk an array of all previously saved date & price info for a given coin id  **/
     func retrieve(for uuid: String, completion: @escaping ([String]) -> Void)
 }
 
-class CoinStore: CoinStorable {
+// Could be made generic: Any object with a UUID (identifiable) and a .description/string value could be stored & retreived.
+class CoinPriceStore: CoinPriceStorable {
     func save(data: [Coin]) {
         DispatchQueue.main.async {
             let defaults = UserDefaults.standard

@@ -10,29 +10,30 @@ import Combine
 
 class HomeViewModel: ObservableObject {
 
+    let title: String = "₿ Coinz App"
+    private let coinProvider: CoinProvidable
+    private let coinPriceStore: CoinPriceStorable
+
     private var cancellables: Set<AnyCancellable> = []
-    private var networkLayer: INetworkLayer
-    private var coinStore: CoinStorable
     private var allCoins = [Coin]()
     private var sortType: CoinSortType
-    let title: String = "₿ Coinz App"
     @Published var coins = [Coin]()
     @Published var sortText: String
     @Published var errorMessage: String = ""
     
     init(
-        networkLayer: INetworkLayer,
-        coinStore: CoinStorable
+        coinProvider: CoinProvidable,
+        coinPriceStore: CoinPriceStorable
     ){
-        self.networkLayer = networkLayer
-        self.coinStore = coinStore
+        self.coinProvider = coinProvider
+        self.coinPriceStore = coinPriceStore
         sortType = .price
         sortText = CoinSortType.price.rawValue
     }
     
     //MARK: - Helper functions
     func loadData() {
-        networkLayer.getCoins()
+        coinProvider.getCoins()
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -45,7 +46,7 @@ class HomeViewModel: ObservableObject {
                 print(coinsResponse.data.coins)
                 self.allCoins = coinsResponse.data.coins.map{ Coin.fromDTO(dto: $0)}
                 sortData(with: sortType)
-                coinStore.save(data: allCoins)
+                coinPriceStore.save(data: allCoins)
             }
             .store(in: &cancellables)
     }
