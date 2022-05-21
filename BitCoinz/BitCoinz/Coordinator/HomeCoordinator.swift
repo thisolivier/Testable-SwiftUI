@@ -7,29 +7,24 @@
 
 import SwiftUI
 
-protocol HomeCoordinatorable: Coordinatorable {
-    func showDetails(for: Coin) -> AnyView
-}
+final class HomeCoordinator: Coordinatorable {
 
-final class HomeCoordinator: HomeCoordinatorable {
-
-    private let coinStore: CoinStorable = CoinStore()
+    private let coinPriceStore: CoinPriceStorable = CoinPriceStore()
 
     func start() -> AnyView {
-        return HomeView(
-            viewModel: HomeViewModel(
-                networkLayer: NetworkLayer(),
-                coinStore: coinStore
-            ),
-            coordinator: self
-        ).asAnyView()
+        return HomeViewFactory.makeHomeView(
+            flowDelegate: self,
+            coinPriceStore: coinPriceStore
+        )
     }
+}
 
+extension HomeCoordinator: HomeFlowDelegate {
     func showDetails(for coin: Coin) -> AnyView {
         return DetailView(
             viewModel: DetailViewModel(
                 coin: coin,
-                coinStore: coinStore
+                coinStore: coinPriceStore
             )
         ).asAnyView()
     }

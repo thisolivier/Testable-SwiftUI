@@ -14,9 +14,9 @@ class DetailViewModel: ObservableObject {
     var name: String
     var price: String
 
-    private let coinStore: CoinStorable
+    private let coinStore: CoinPriceStorable
     
-    init(coin: Coin, coinStore: CoinStorable){
+    init(coin: Coin, coinStore: CoinPriceStorable){
         self.coinStore = coinStore
         self.coinId = coin.id
         symbol = coin.symbol

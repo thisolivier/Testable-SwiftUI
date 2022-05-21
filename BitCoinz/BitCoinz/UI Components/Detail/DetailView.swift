@@ -38,7 +38,7 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(
             viewModel: DetailViewModel(
                 coin: dummyCoin,
-                coinStore: CoinStore()
+                coinStore: CoinPriceStore()
             )
         )
     }

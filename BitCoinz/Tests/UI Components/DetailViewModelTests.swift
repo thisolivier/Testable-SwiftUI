@@ -56,7 +56,7 @@ class DetailViewModelTests: XCTestCase {
     }
 }
 
-private class MockCoinStore: CoinStorable {
+private class MockCoinStore: CoinPriceStorable {
     var dataToReturn: [String] = []
     var receivedUUID: String?
 
