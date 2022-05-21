@@ -1,73 +1,84 @@
 //
-//  Unit_Tests.swift
-//  Unit Tests
+//  HomePresenterTests.swift
+//  HomePresenterTests
 //
-//  Created by Burhan Aras on 26.12.2021.
+//  Created by Olvier Butler on 21.05.2022.
 //
 
 import XCTest
 import Combine
 @testable import BitCoinz
 
-class HomeViewModelTests: XCTestCase {
+class HomePresenterTests: XCTestCase {
 
     // The network layer is mocked per case so we don't handle it at the class level
     // TODO: Move network layer to class level
     private var coinStore: MockCoinStore!
+    private var viewModel: HomeViewModel!
 
     override func setUp() {
         coinStore = MockCoinStore()
+        viewModel = HomeViewModel(dynamicProperties: .empty, staticProperties: .init(title: "Title"))
     }
 
     func test_loadData_success_correctDataAcessible() {
-        // GIVEN: that we have test network layer that returns some coins
+        // Expectation: We will have 12 coins
+        let expectedCoinCount = 12
+        
+        // Action
         let sut = makeSutForSuccess(coinCount: 12)
+        sut.start()
         
-        // WHEN: HomeViewModel's loadData() is called
-        sut.loadData()
-        
-        // THEN: HomeViewModel's coins should be same as returned data
-        XCTAssertEqual(12, sut.coins.count)
+        // Assertion: The view model has been updated with the correct coins
+        XCTAssertEqual(expectedCoinCount, viewModel.dynamicProperties.coins.count)
     }
 
     func test_loadData_success_writtenToStore() throws {
-        // GIVEN: that we have test network layer that returns some coins
-        let sut = makeSutForSuccess(coinCount: 12)
+        // Expectation: We will have 12 coins
+        let expectedCoinCount = 12
 
-        // WHEN: HomeViewModel's loadData() is called
-        sut.loadData()
+
+        // Action: We start the presenter
+        let sut = makeSutForSuccess(coinCount: 12)
+        sut.start()
 
         // THEN: HomeViewModel's coins should be same as returned data
         let savedCoins = try XCTUnwrap(coinStore.coinsSaved)
-        XCTAssertEqual(sut.coins, savedCoins)
+        XCTAssertEqual(expectedCoinCount, savedCoins.count)
+        XCTAssertEqual(viewModel.dynamicProperties.coins, savedCoins)
     }
     
     func test_loadData_showErrorWhenNetworkFails() {
-        // GIVEN: that we have test network layer that returns some coins
-        let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .failure(NetworkError.apiError))
-        let sut = HomeViewModel(
+        // Expectation: We show the following error
+        let expectedResponse = NetworkError.apiError
+
+        // Setup
+        let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .failure(expectedResponse))
+        let sut = HomePresenter(
             coinProvider: mockCoinProvider,
-            coinPriceStore: coinStore
+            coinPriceStore: coinStore,
+            homeViewModel: viewModel
         )
+
+        // Action
+        sut.start()
         
-        // WHEN: HomeViewModel's loadData() is called
-        sut.loadData()
-        
-        // THEN: HomeViewModel's coins should be same as returned data
-        XCTAssertEqual(NetworkError.apiError.localizedDescription, sut.errorMessage)
+        // Assertion
+        XCTAssertEqual(expectedResponse.localizedDescription, viewModel.dynamicProperties.errorMessage)
     }
 
     // MARK: - Helper Functions
 
-    func makeSutForSuccess(coinCount: Int) -> HomeViewModel {
+    func makeSutForSuccess(coinCount: Int) -> HomePresenter {
         let coinsResponse = CoinsResponse(
             status: "success",
             data: CoinsDataDTO(coins: dummyData(count: coinCount))
         )
         let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .success(coinsResponse))
-        return HomeViewModel(
+        return HomePresenter(
             coinProvider: mockCoinProvider,
-            coinPriceStore: coinStore
+            coinPriceStore: coinStore,
+            homeViewModel: viewModel
         )
     }
 }

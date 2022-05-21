@@ -12,7 +12,8 @@ protocol HomeFlowDelegate: AnyObject {
 }
 
 struct HomeView: View {
-    @ObservedObject var viewModel: HomeViewModel
+    var presenter: HomePresentable?
+    @ObservedObject var viewModel: ViewModelHolder<HomeStaticViewModel, HomeDynamicViewModel>
     weak var flowDelegate: HomeFlowDelegate?
 
     var body: some View {
@@ -20,7 +21,7 @@ struct HomeView: View {
             ScrollView(.vertical) {
                 LazyVStack{
                     topBar.padding()
-                    ForEach(viewModel.coins) { coin in
+                    ForEach(viewModel.dynamicProperties.coins) { coin in
                         NavigationLink {
                             flowDelegate?.showDetails(for: coin)
                         } label: {
@@ -29,8 +30,6 @@ struct HomeView: View {
                         }.accessibilityIdentifier("coinRow")
                     }
                 }
-            }.task {
-                viewModel.loadData()
             }
             .navigationBarHidden(true)
         }
@@ -38,20 +37,20 @@ struct HomeView: View {
 
     var topBar: some View {
         HStack {
-            Text(viewModel.title)
+            Text(viewModel.staticProperties.title)
                 .font(.title)
                 .accessibilityIdentifier("appTitle")
             Spacer()
             Menu {
                 ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
-                        viewModel.sortData(with: sortType)
+                        presenter?.sortData(with: sortType)
                     } label: {
                         Text(sortType.rawValue)
                     }.accessibilityIdentifier("coinFilterOption")
                 }
             } label: {
-                Text(viewModel.sortText)
+                Text(viewModel.dynamicProperties.sortText)
             }
             .accessibilityIdentifier("coinFilterMenu")
         }
@@ -61,9 +60,10 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(
-            viewModel: HomeViewModel(
-                coinProvider: CoinProvider(),
-                coinPriceStore: CoinPriceStore()
+            presenter: nil,
+            viewModel: .init(
+                dynamicProperties: .init(coins: [], sortText: "Sort", errorMessage: "Error"),
+                staticProperties: .init(title: "App Title")
             )
         )
     }

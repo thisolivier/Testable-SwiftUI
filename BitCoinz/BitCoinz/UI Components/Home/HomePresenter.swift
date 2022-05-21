@@ -13,19 +13,12 @@ import Combine
 // View has a weak reference to the ViewModelHolder
 // Communication flows one way, from View to Presenter to ViewModelHolder
 
-struct HomeStaticViewModel {
-    let title: String
+protocol HomePresentable {
+    func sortData(with: CoinSortType)
 }
 
-struct HomeDynamicViewModel {
-    var coins: [Coin]
-    var sortText: String
-    var errorMessage: String
-}
+class HomePresenter {
 
-class HomePresenter: ObservableObject {
-
-    typealias HomeViewModel = ViewModelHolder<HomeStaticViewModel, HomeDynamicViewModel>
     private static let defaultSortType = CoinSortType.price
 
     private let coinProvider: CoinProvidable
@@ -38,23 +31,19 @@ class HomePresenter: ObservableObject {
     
     init(
         coinProvider: CoinProvidable,
-        coinPriceStore: CoinPriceStorable
+        coinPriceStore: CoinPriceStorable,
+        homeViewModel: HomeViewModel
     ){
         self.coinProvider = coinProvider
         self.coinPriceStore = coinPriceStore
-        sortType = Self.defaultSortType
-        self.homeViewModel = HomeViewModel(
-            dynamicProperties: HomeDynamicViewModel(
-                coins: [],
-                sortText: Self.defaultSortType.rawValue,
-                errorMessage: ""
-            ),
-            staticProperties: HomeStaticViewModel(title: "₿ Coinz App"))
+        self.sortType = Self.defaultSortType
+        self.homeViewModel = homeViewModel
     }
 
-    func start() -> HomeViewModel {
+    func start() {
+        homeViewModel.staticProperties = .init(title: "₿ Coinz App")
+        homeViewModel.dynamicProperties.sortText = sortType.rawValue
         loadData()
-        return homeViewModel
     }
 
     private func loadData() {
@@ -75,21 +64,20 @@ class HomePresenter: ObservableObject {
             }
             .store(in: &cancellables)
     }
-    
+}
+
+extension HomePresenter: HomePresentable {
     func sortData(with sortType: CoinSortType) {
         self.sortType = sortType
+        self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
         switch sortType {
         case .price:
-            self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
             self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.price.toDouble() > $1.price.toDouble() })
         case .marketCap:
-            self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
             self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.marketCap.toDouble() > $1.marketCap.toDouble() })
         case .change:
-            self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
             self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.change.toDouble() > $1.change.toDouble() })
         case .listedAt:
-            self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
             self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.listedAt > $1.listedAt })
         }
     }
