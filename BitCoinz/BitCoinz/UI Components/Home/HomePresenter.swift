@@ -15,6 +15,7 @@ import Combine
 
 protocol HomePresentable {
     func sortData(with: CoinSortType)
+    func loadData()
 }
 
 class HomePresenter {
@@ -38,15 +39,17 @@ class HomePresenter {
         self.coinPriceStore = coinPriceStore
         self.sortType = Self.defaultSortType
         self.homeViewModel = homeViewModel
+        setInitialProperties()
     }
 
-    func start() {
+    private func setInitialProperties() {
         homeViewModel.staticProperties = .init(title: "₿ Coinz App")
         homeViewModel.dynamicProperties.sortText = sortType.rawValue
-        loadData()
     }
+}
 
-    private func loadData() {
+extension HomePresenter: HomePresentable {
+    func loadData() {
         coinProvider.getCoins()
             .sink { completion in
                 switch completion {
@@ -64,9 +67,7 @@ class HomePresenter {
             }
             .store(in: &cancellables)
     }
-}
 
-extension HomePresenter: HomePresentable {
     func sortData(with sortType: CoinSortType) {
         self.sortType = sortType
         self.homeViewModel.dynamicProperties.sortText = sortType.rawValue

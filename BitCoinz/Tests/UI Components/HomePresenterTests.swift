@@ -27,7 +27,7 @@ class HomePresenterTests: XCTestCase {
         
         // Action
         let sut = makeSutForSuccess(coinCount: 12)
-        sut.start()
+        sut.loadData()
         
         // Assertion: The view model has been updated with the correct coins
         XCTAssertEqual(expectedCoinCount, viewModel.dynamicProperties.coins.count)
@@ -40,7 +40,7 @@ class HomePresenterTests: XCTestCase {
 
         // Action: We start the presenter
         let sut = makeSutForSuccess(coinCount: 12)
-        sut.start()
+        sut.loadData()
 
         // THEN: HomeViewModel's coins should be same as returned data
         let savedCoins = try XCTUnwrap(coinStore.coinsSaved)
@@ -59,9 +59,7 @@ class HomePresenterTests: XCTestCase {
             coinPriceStore: coinStore,
             homeViewModel: viewModel
         )
-
-        // Action
-        sut.start()
+        sut.loadData()
         
         // Assertion
         XCTAssertEqual(expectedResponse.localizedDescription, viewModel.dynamicProperties.errorMessage)

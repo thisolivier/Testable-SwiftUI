@@ -22,7 +22,6 @@ enum HomeViewFactory {
             coinPriceStore: coinPriceStore,
             homeViewModel: viewModel
         )
-        presenter.start()
         return HomeView(
             presenter: presenter,
             viewModel: viewModel,

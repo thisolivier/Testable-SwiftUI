@@ -21,11 +21,9 @@ final class HomeCoordinator: Coordinatorable {
 
 extension HomeCoordinator: HomeFlowDelegate {
     func showDetails(for coin: Coin) -> AnyView {
-        return DetailView(
-            viewModel: DetailViewModel(
-                coin: coin,
-                coinStore: coinPriceStore
-            )
-        ).asAnyView()
+        return DetailViewFactory.makeDetailView(
+            coin: coin,
+            coinStore: coinPriceStore
+        )
     }
 }

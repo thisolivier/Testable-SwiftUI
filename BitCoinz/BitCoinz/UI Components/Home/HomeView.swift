@@ -32,6 +32,8 @@ struct HomeView: View {
                 }
             }
             .navigationBarHidden(true)
+        }.task {
+            presenter?.loadData()
         }
     }
 
