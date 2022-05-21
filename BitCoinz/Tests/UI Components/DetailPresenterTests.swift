@@ -1,5 +1,5 @@
 //
-//  DetailViewModelTests.swift
+//  DetailPresenterTests.swift
 //  Unit Tests
 //
 //  Created by Olivier Butler on 19/05/2022.
@@ -9,10 +9,11 @@ import XCTest
 import Combine
 @testable import BitCoinz
 
-class DetailViewModelTests: XCTestCase {
-    private var sut: DetailViewModel!
+class DetailPresenterTests: XCTestCase {
+    private var sut: DetailPresenter!
     private var mockCoin: Coin!
     private var mockCoinStore: MockCoinStore!
+    private var mockViewModel: DetailViewModel!
 
     override func setUp() {
         mockCoin = Coin(
@@ -26,16 +27,21 @@ class DetailViewModelTests: XCTestCase {
             listedAt: Double.random(in: 0..<300)
         )
         mockCoinStore = MockCoinStore()
-        sut = DetailViewModel(
+        mockViewModel = DetailViewModel(
+            dynamicProperties: .init(historyItems: []),
+            staticProperties: .empty
+        )
+        sut = DetailPresenter(
             coin: mockCoin,
-            coinStore: mockCoinStore
+            coinStore: mockCoinStore,
+            viewModel: mockViewModel
         )
     }
 
     func test_init_storesCorrectDetailsFromCoin() {
-        XCTAssertEqual(sut.price, mockCoin.price)
-        XCTAssertEqual(sut.symbol, mockCoin.symbol)
-        XCTAssertEqual(sut.name, mockCoin.name)
+        XCTAssertEqual(mockViewModel.staticProperties.price, mockCoin.price)
+        XCTAssertEqual(mockViewModel.staticProperties.symbol, mockCoin.symbol)
+        XCTAssertEqual(mockViewModel.staticProperties.name, mockCoin.name)
     }
 
     func test_init_requestsCorrectData() {
@@ -52,7 +58,7 @@ class DetailViewModelTests: XCTestCase {
         sut.loadData()
 
         // Check we got our test data back
-        XCTAssertEqual(sut.historyItems, testData)
+        XCTAssertEqual(mockViewModel.dynamicProperties.historyItems, testData)
     }
 }
 

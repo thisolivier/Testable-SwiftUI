@@ -13,11 +13,18 @@ enum HomeViewFactory {
         coinProvider: CoinProvidable = CoinProvider(),
         coinPriceStore: CoinPriceStorable = CoinPriceStore()
     ) -> AnyView {
+        let viewModel = HomeViewModel(
+            dynamicProperties: .empty,
+            staticProperties: .init(title: "")
+        )
+        let presenter = HomePresenter(
+            coinProvider: coinProvider,
+            coinPriceStore: coinPriceStore,
+            homeViewModel: viewModel
+        )
         return HomeView(
-            viewModel: HomeViewModel(
-                coinProvider: coinProvider,
-                coinPriceStore: coinPriceStore
-            ),
+            presenter: presenter,
+            viewModel: viewModel,
             flowDelegate: flowDelegate
         ).asAnyView()
     }
