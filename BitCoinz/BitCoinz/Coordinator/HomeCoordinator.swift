@@ -15,7 +15,7 @@ final class HomeCoordinator: Coordinatorable {
         return HomeViewFactory.makeHomeView(
             flowDelegate: self,
             coinPriceStore: coinPriceStore
-        )
+        ).asAnyView()
     }
 }
 
@@ -24,6 +24,6 @@ extension HomeCoordinator: HomeFlowDelegate {
         return DetailViewFactory.makeDetailView(
             coin: coin,
             coinStore: coinPriceStore
-        )
+        ).asAnyView()
     }
 }

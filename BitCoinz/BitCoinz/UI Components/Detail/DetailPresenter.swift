@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol DetailPresentable {
+    func loadData() -> ()
+}
+
 class DetailPresenter {
     private let coinId: String
     private let viewModel: DetailViewModel
@@ -19,10 +23,12 @@ class DetailPresenter {
         viewModel.staticProperties = .init(symbol: coin.symbol, name: coin.name, price: coin.price)
         loadData()
     }
+}
 
+extension DetailPresenter: DetailPresentable {
     func loadData() {
-        coinStore.retrieve(for: coinId) { data in
-            self.viewModel.dynamicProperties.historyItems = data
+        coinStore.retrieve(for: coinId) { [weak self] data in
+            self?.viewModel.dynamicProperties.historyItems = data
         }
     }
 }

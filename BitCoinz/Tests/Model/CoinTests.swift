@@ -10,7 +10,7 @@ import Combine
 @testable import BitCoinz
 
 class CoinTests: XCTestCase {
-    func test_fromDTO_shouldWork(){
+    func test_fromDTO_correctProperties(){
         // GIVEN: that we have a CoinDTO
         let dto = CoinDTO(
             uuid: "uuid",

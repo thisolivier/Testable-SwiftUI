@@ -9,10 +9,10 @@ import SwiftUI
 
 enum HomeViewFactory {
     static func makeHomeView(
-        flowDelegate: HomeFlowDelegate,
+        flowDelegate: HomeFlowDelegate?,
         coinProvider: CoinProvidable = CoinProvider(),
         coinPriceStore: CoinPriceStorable = CoinPriceStore()
-    ) -> AnyView {
+    ) -> HomeView {
         let viewModel = HomeViewModel(
             dynamicProperties: .empty,
             staticProperties: .init(title: "")
@@ -26,6 +26,6 @@ enum HomeViewFactory {
             presenter: presenter,
             viewModel: viewModel,
             flowDelegate: flowDelegate
-        ).asAnyView()
+        )
     }
 }

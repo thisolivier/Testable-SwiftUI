@@ -12,16 +12,19 @@ enum DetailViewFactory {
     static func makeDetailView(
         coin: Coin,
         coinStore: CoinPriceStorable = CoinPriceStore()
-    ) -> AnyView {
+    ) -> DetailView {
         let viewModel = DetailViewModel(
             dynamicProperties: .init(historyItems: []),
             staticProperties: .empty
         )
-        _ = DetailPresenter(
+        let presenter = DetailPresenter(
             coin: coin,
             coinStore: coinStore,
             viewModel: viewModel
         )
-        return DetailView(viewModel: viewModel).asAnyView()
+        return DetailView(
+            viewModel: viewModel,
+            presenter: presenter
+        )
     }
 }
