@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
+    var presenter: DetailPresentable?
 
     var body: some View {
         ScrollView {
@@ -29,6 +30,8 @@ struct DetailView: View {
                 HStack{ Spacer()}
             }
             .padding()
+        }.task {
+            presenter?.loadData()
         }
     }
 }
@@ -42,7 +45,9 @@ struct DetailView_Previews: PreviewProvider {
                     "A very long line with lots and lots of text that won't fit on one line.",
                     "111111122222223"
                 ]),
-                staticProperties: .init(symbol: "$$$", name: "Trident Coin", price: "123.45"))
+                staticProperties: .init(symbol: "$$$", name: "Trident Coin", price: "123.45")
+            ),
+            presenter: nil
         )
     }
 }

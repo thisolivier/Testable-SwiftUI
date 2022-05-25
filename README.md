@@ -37,9 +37,11 @@ A coordinator should only need one public methos, ´start()´ method to be used.
 - [x] Add UITests
 - [x] Re-work network layer implementation and dependency injection pattern
 - [x] Use Jordan Morgan's wrapper design to decouple VM implementations from UI
+- [x] Add factory tests
 - [ ] Add image caching with persistence
+- [ ] Attempt to simplify ViewModel API using keypaths/property wrappers
 - [ ] Write tests for coordinator, network layer, provider and store
-- [x]* Separate use case (application business rules) from interface adapters (presenters)
+- [x] Separate use case (application business rules) from interface adapters (presenters)
 - [ ] Run mock server to facilitate full UI Testing
 - [ ] Add favorites feature with local persistence
 - [ ] Add image caching with local persistence

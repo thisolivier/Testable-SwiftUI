@@ -16,16 +16,7 @@ class DetailPresenterTests: XCTestCase {
     private var mockViewModel: DetailViewModel!
 
     override func setUp() {
-        mockCoin = Coin(
-            id: UUID().uuidString,
-            symbol: UUID().uuidString,
-            name: UUID().uuidString,
-            iconUrl: URL(string: "google.com")!,
-            price: UUID().uuidString,
-            marketCap: UUID().uuidString,
-            change: UUID().uuidString,
-            listedAt: Double.random(in: 0..<300)
-        )
+        mockCoin = Coin.randomCoin
         mockCoinStore = MockCoinStore()
         mockViewModel = DetailViewModel(
             dynamicProperties: .init(historyItems: []),
