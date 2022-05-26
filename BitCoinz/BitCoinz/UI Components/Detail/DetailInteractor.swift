@@ -1,5 +1,5 @@
 //
-//  DetailPresenter.swift
+//  DetailInteractor.swift
 //  BitCoinz
 //
 //  Created by Olivier Butler on 21/05/2022.
@@ -11,7 +11,7 @@ protocol DetailPresentable {
     func loadData() -> ()
 }
 
-class DetailPresenter {
+class DetailInteractor {
     private let coinId: String
     private let viewModel: DetailViewModel
     private let coinStore: CoinPriceStorable
@@ -25,7 +25,7 @@ class DetailPresenter {
     }
 }
 
-extension DetailPresenter: DetailPresentable {
+extension DetailInteractor: DetailPresentable {
     func loadData() {
         coinStore.retrieve(for: coinId) { [weak self] data in
             self?.viewModel.dynamicProperties.historyItems = data

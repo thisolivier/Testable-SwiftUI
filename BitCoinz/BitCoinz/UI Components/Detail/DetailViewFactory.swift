@@ -17,14 +17,14 @@ enum DetailViewFactory {
             dynamicProperties: .init(historyItems: []),
             staticProperties: .empty
         )
-        let presenter = DetailPresenter(
+        let interactor = DetailInteractor(
             coin: coin,
             coinStore: coinStore,
             viewModel: viewModel
         )
         return DetailView(
             viewModel: viewModel,
-            presenter: presenter
+            interactor: interactor
         )
     }
 }

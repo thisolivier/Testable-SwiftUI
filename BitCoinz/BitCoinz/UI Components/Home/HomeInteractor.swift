@@ -8,17 +8,17 @@
 import Foundation
 import Combine
 
-// View has strong reference to the Presenter
-// Presenter has strong refrence to the ViewModelHolder
+// View has strong reference to the Interactor
+// Interactor has strong refrence to the ViewModelHolder
 // View has a weak reference to the ViewModelHolder
-// Communication flows one way, from View to Presenter to ViewModelHolder
+// Communication flows one way, from View to Interactor to ViewModelHolder
 
 protocol HomePresentable {
     func sortData(with: CoinSortType)
     func loadData()
 }
 
-class HomePresenter {
+class HomeInteractor {
 
     private static let defaultSortType = CoinSortType.price
 
@@ -48,7 +48,7 @@ class HomePresenter {
     }
 }
 
-extension HomePresenter: HomePresentable {
+extension HomeInteractor: HomePresentable {
     func loadData() {
         coinProvider.getCoins()
             .sink { completion in

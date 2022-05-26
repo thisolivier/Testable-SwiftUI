@@ -17,13 +17,13 @@ enum HomeViewFactory {
             dynamicProperties: .empty,
             staticProperties: .init(title: "")
         )
-        let presenter = HomePresenter(
+        let interactor = HomeInteractor(
             coinProvider: coinProvider,
             coinPriceStore: coinPriceStore,
             homeViewModel: viewModel
         )
         return HomeView(
-            presenter: presenter,
+            interactor: interactor,
             viewModel: viewModel,
             flowDelegate: flowDelegate
         )

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
-    var presenter: DetailPresentable?
+    var interactor: DetailPresentable?
 
     var body: some View {
         ScrollView {
@@ -31,7 +31,7 @@ struct DetailView: View {
             }
             .padding()
         }.task {
-            presenter?.loadData()
+            interactor?.loadData()
         }
     }
 }
@@ -47,7 +47,7 @@ struct DetailView_Previews: PreviewProvider {
                 ]),
                 staticProperties: .init(symbol: "$$$", name: "Trident Coin", price: "123.45")
             ),
-            presenter: nil
+            interactor: nil
         )
     }
 }

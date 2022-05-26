@@ -1,5 +1,5 @@
 //
-//  DetailPresenterTests.swift
+//  DetailInteractorTests.swift
 //  Unit Tests
 //
 //  Created by Olivier Butler on 19/05/2022.
@@ -9,8 +9,8 @@ import XCTest
 import Combine
 @testable import BitCoinz
 
-class DetailPresenterTests: XCTestCase {
-    private var sut: DetailPresenter!
+class DetailInteractorTests: XCTestCase {
+    private var sut: DetailInteractor!
     private var mockCoin: Coin!
     private var mockCoinStore: MockCoinStore!
     private var mockViewModel: DetailViewModel!
@@ -22,7 +22,7 @@ class DetailPresenterTests: XCTestCase {
             dynamicProperties: .init(historyItems: []),
             staticProperties: .empty
         )
-        sut = DetailPresenter(
+        sut = DetailInteractor(
             coin: mockCoin,
             coinStore: mockCoinStore,
             viewModel: mockViewModel

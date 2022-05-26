@@ -13,7 +13,7 @@ class HomeViewFactoryTests: XCTestCase {
     func test_factoryMakesView_generatesDependencies() {
         let view = HomeViewFactory.makeHomeView(flowDelegate: nil)
         XCTAssertNotNil(view.viewModel)
-        XCTAssertNotNil(view.presenter)
+        XCTAssertNotNil(view.interactor)
     }
 
     func test_factoryMakesView_assignsFlowDelegate() {
