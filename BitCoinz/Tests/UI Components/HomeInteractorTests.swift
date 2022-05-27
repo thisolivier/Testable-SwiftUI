@@ -1,6 +1,6 @@
 //
-//  HomePresenterTests.swift
-//  HomePresenterTests
+//  HomeInteractorTests.swift
+//  HomeInteractorTests
 //
 //  Created by Olvier Butler on 21.05.2022.
 //
@@ -9,7 +9,7 @@ import XCTest
 import Combine
 @testable import BitCoinz
 
-class HomePresenterTests: XCTestCase {
+class HomeInteractorTests: XCTestCase {
 
     // The network layer is mocked per case so we don't handle it at the class level
     // TODO: Move network layer to class level
@@ -38,7 +38,7 @@ class HomePresenterTests: XCTestCase {
         let expectedCoinCount = 12
 
 
-        // Action: We start the presenter
+        // Action: We start the interactor
         let sut = makeSutForSuccess(coinCount: 12)
         sut.loadData()
 
@@ -54,7 +54,7 @@ class HomePresenterTests: XCTestCase {
 
         // Setup
         let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .failure(expectedResponse))
-        let sut = HomePresenter(
+        let sut = HomeInteractor(
             coinProvider: mockCoinProvider,
             coinPriceStore: coinStore,
             homeViewModel: viewModel
@@ -67,13 +67,13 @@ class HomePresenterTests: XCTestCase {
 
     // MARK: - Helper Functions
 
-    func makeSutForSuccess(coinCount: Int) -> HomePresenter {
+    func makeSutForSuccess(coinCount: Int) -> HomeInteractor {
         let coinsResponse = CoinsResponse(
             status: "success",
             data: CoinsDataDTO(coins: dummyData(count: coinCount))
         )
         let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .success(coinsResponse))
-        return HomePresenter(
+        return HomeInteractor(
             coinProvider: mockCoinProvider,
             coinPriceStore: coinStore,
             homeViewModel: viewModel

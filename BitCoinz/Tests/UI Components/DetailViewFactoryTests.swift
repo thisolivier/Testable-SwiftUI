@@ -13,7 +13,7 @@ class DetailViewFactoryTests: XCTestCase {
     func test_makeDetailView_generatesDependencies() {
         let testCoin = Coin.randomCoin
         let view = DetailViewFactory.makeDetailView(coin: testCoin)
-        XCTAssertTrue(view.presenter is DetailPresenter)
+        XCTAssertTrue(view.interactor is DetailInteractor)
         XCTAssertNotNil(view.viewModel)
     }
 

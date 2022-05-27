@@ -12,7 +12,7 @@ protocol HomeFlowDelegate: AnyObject {
 }
 
 struct HomeView: View {
-    var presenter: HomePresentable?
+    var interactor: HomePresentable?
     @ObservedObject var viewModel: ViewModelHolder<HomeStaticViewModel, HomeDynamicViewModel>
     weak var flowDelegate: HomeFlowDelegate?
 
@@ -33,7 +33,7 @@ struct HomeView: View {
             }
             .navigationBarHidden(true)
         }.task {
-            presenter?.loadData()
+            interactor?.loadData()
         }
     }
 
@@ -46,7 +46,7 @@ struct HomeView: View {
             Menu {
                 ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
-                        presenter?.sortData(with: sortType)
+                        interactor?.sortData(with: sortType)
                     } label: {
                         Text(sortType.rawValue)
                     }.accessibilityIdentifier("coinFilterOption")
@@ -62,7 +62,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(
-            presenter: nil,
+            interactor: nil,
             viewModel: .init(
                 dynamicProperties: .init(coins: [], sortText: "Sort", errorMessage: "Error"),
                 staticProperties: .init(title: "App Title")
