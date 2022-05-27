@@ -12,37 +12,37 @@ protocol HomeFlowDelegate: AnyObject {
 }
 
 struct HomeView: View {
-    var interactor: HomePresentable?
+    var interactor: HomeInteractable?
     @ObservedObject var viewModel: ViewModelHolder<HomeStaticViewModel, HomeDynamicViewModel>
     weak var flowDelegate: HomeFlowDelegate?
 
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                LazyVStack{
-                    topBar.padding()
-                    ForEach(viewModel.dynamicProperties.coins) { coin in
-                        NavigationLink {
-                            flowDelegate?.showDetails(for: coin)
-                        } label: {
-                            CoinRow(coin: coin)
-                                .padding(4)
-                        }.accessibilityIdentifier("coinRow")
+            HStack {
+                ScrollView(.vertical) {
+                    LazyVStack(alignment: .leading){
+                        filterMenu
+                            .padding(.leading, 15)
+                        ForEach(viewModel.dynamicProperties.coins) { coin in
+                            NavigationLink {
+                                flowDelegate?.showDetails(for: coin)
+                            } label: {
+                                CoinRow(coin: coin)
+                                    .padding(4)
+                            }.accessibilityIdentifier("coinRow")
+                        }
                     }
                 }
             }
-            .navigationBarHidden(true)
+            .navigationTitle(viewModel.staticProperties.title)
+            .navigationBarTitleDisplayMode(.large)
         }.task {
             interactor?.loadData()
         }
     }
 
-    var topBar: some View {
+    var filterMenu: some View {
         HStack {
-            Text(viewModel.staticProperties.title)
-                .font(.title)
-                .accessibilityIdentifier("appTitle")
-            Spacer()
             Menu {
                 ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
@@ -52,10 +52,10 @@ struct HomeView: View {
                     }.accessibilityIdentifier("coinFilterOption")
                 }
             } label: {
-                Text(viewModel.dynamicProperties.sortText)
+                Text("Sorted by " + viewModel.dynamicProperties.sortText)
             }
-            .accessibilityIdentifier("coinFilterMenu")
         }
+        .accessibilityIdentifier("coinFilterMenu")
     }
 }
 

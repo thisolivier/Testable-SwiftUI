@@ -13,7 +13,7 @@ import Combine
 // View has a weak reference to the ViewModelHolder
 // Communication flows one way, from View to Interactor to ViewModelHolder
 
-protocol HomePresentable {
+protocol HomeInteractable {
     func sortData(with: CoinSortType)
     func loadData()
 }
@@ -43,12 +43,12 @@ class HomeInteractor {
     }
 
     private func setInitialProperties() {
-        homeViewModel.staticProperties = .init(title: "₿ Coinz App")
+        homeViewModel.staticProperties = .init(title: "₿ All Coinz")
         homeViewModel.dynamicProperties.sortText = sortType.rawValue
     }
 }
 
-extension HomeInteractor: HomePresentable {
+extension HomeInteractor: HomeInteractable {
     func loadData() {
         coinProvider.getCoins()
             .sink { completion in

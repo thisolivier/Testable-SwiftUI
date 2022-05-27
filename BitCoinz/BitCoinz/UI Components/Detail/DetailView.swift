@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
-    var interactor: DetailPresentable?
+    var interactor: DetailInteractable?
 
     var body: some View {
         ScrollView {
