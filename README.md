@@ -13,14 +13,14 @@ TL:DR; Application use case logic and presentation logic occur in the interactor
 
 ![Diagram showing organisation of MVP+C components](/VIVM.png?raw=true)
 
-This design pattern is closely related to MVVM (model, view, view model - common for SwiftUI or reactive apps), but the role of the view model is split. Application logic is implemented in the interactor- it knows how to handle interactions with the view. The interactor outputs formatted data to a simple view model (a struct), which is observed by the view.
+This design pattern is closely related to MVVM (model, view, view model - common for SwiftUI or reactive apps), but the role of the view model is split. Application logic is implemented in the interactor- when a user interacts with the view, the interactor knows how to handle those interactions. The interactor outputs formatted data to a simple view model (a struct), which is observed by the view.
 
 This enables unidirectional-like data flow, a good separation of concerns, and facilitates reactive, declarative views which are decoupled from the business and application logic.
 
 A fully reactive paradigm would see the interactor subscribe to actions in the view, and expose publishers which are then connected to the view model, I'm still trying to figure that one out...
 
 ### Isn't this VIP or MVP? Some theory...
-I love VIP (view, interactor, presenter) and MVP (model, view, presenter), but a presenter knows about the view and how to change it. It's is to *reach out* and manipulate the view when state changes. SwiftUI is fundementally reactive and declarative, meaning the view should simply reflect the state of some model, so a presenter is never going to be appropriate.
+I love VIP (view, interactor, presenter) and MVP (model, view, presenter), but a presenter knows about the view and how to change it. It's role is to *reach out* and manipulate the view when state changes. SwiftUI is fundementally reactive and declarative, meaning the view should simply reflect the state of some model, so a presenter is never going to be appropriate.
 
 This doesn't mean we have to give up on well segmented code, or even the readability that uni-directional data flow paradigms like VIP give us (where data always flows from view to interactor to presenter to view). 
 
