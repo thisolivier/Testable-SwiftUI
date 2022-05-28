@@ -21,7 +21,7 @@ class HomeViewTests: XCTestCase {
     func test_headerContent() {
         // Expectation
         let expectedAppTitle = "₿ All Coinz"
-        let expectedMenuLabel = "Sorted by Price"
+        let expectedMenuLabel = "Price"
 
         // Action
         app.launch()

@@ -18,7 +18,7 @@ class HomeInteractorTests: XCTestCase {
 
     override func setUp() {
         coinStore = MockCoinStore()
-        viewModel = HomeViewModel(dynamicProperties: .empty, staticProperties: .init(title: "Title"))
+        viewModel = HomeViewModel(dynamicProperties: .empty, staticProperties: .init(title: "Title", fallbackImageName: ""))
     }
 
     func test_loadData_success_correctDataAcessible() {
