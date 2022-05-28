@@ -16,7 +16,7 @@ class DetailInteractorTests: XCTestCase {
     private var mockViewModel: DetailViewModel!
 
     override func setUp() {
-        mockCoin = Coin.randomCoin
+        mockCoin = Coin.mockCoin
         mockCoinStore = MockCoinStore()
         mockViewModel = DetailViewModel(
             dynamicProperties: .init(historyItems: []),

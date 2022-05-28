@@ -50,7 +50,7 @@ class HomeInteractorTests: XCTestCase {
     
     func test_loadData_showErrorWhenNetworkFails() {
         // Expectation: We show the following error
-        let expectedResponse = NetworkError.apiError
+        let expectedResponse = NetworkError.apiError("Fake Error") as Error
 
         // Setup
         let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .failure(expectedResponse))
@@ -68,10 +68,7 @@ class HomeInteractorTests: XCTestCase {
     // MARK: - Helper Functions
 
     func makeSutForSuccess(coinCount: Int) -> HomeInteractor {
-        let coinsResponse = CoinsResponse(
-            status: "success",
-            data: CoinsDataDTO(coins: dummyData(count: coinCount))
-        )
+        let coinsResponse = (0..<coinCount).map { _ in Coin.mockCoin }
         let mockCoinProvider: CoinProvidable = TestCoinProvider(response: .success(coinsResponse))
         return HomeInteractor(
             coinProvider: mockCoinProvider,
@@ -96,32 +93,22 @@ private class MockCoinStore: CoinPriceStorable {
 
 // MARK: - Network layer that returns data
 private class TestCoinProvider: CoinProvidable {
-    let response: Result<CoinsResponse, NetworkError>
+    let response: Result<[Coin], Error>
     
-    init(response: Result<CoinsResponse, NetworkError>){
+    init(response: Result<[Coin], Error>){
         self.response = response
     }
     
-    func getCoins() -> AnyPublisher<CoinsResponse, NetworkError> {
+    func getCoins() -> AnyPublisher<[Coin], Error> {
         switch response {
         case .success(let response):
-            return Result<CoinsResponse, NetworkError>
+            return Result<[Coin], Error>
                 .Publisher(.success(response))
                 .eraseToAnyPublisher()
         case .failure(let error):
-            return Result<CoinsResponse, NetworkError>
+            return Result<[Coin], Error>
                 .Publisher(.failure(error))
                 .eraseToAnyPublisher()
         }
     }
-}
-
-// MARK: - Dummy data
-func dummyData(count: Int) -> [CoinDTO] {
-    var data = [CoinDTO]()
-    for index in 0..<count {
-        let coin = CoinDTO(uuid: "\(index)", symbol: "symbol", name: "name", iconUrl: "url", price: "12.5", marketCap: "marketCap", change: "change", listedAt: 1.0)
-        data.append(coin)
-    }
-    return data
 }

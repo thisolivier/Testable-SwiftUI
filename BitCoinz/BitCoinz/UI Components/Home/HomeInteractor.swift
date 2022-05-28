@@ -43,7 +43,7 @@ class HomeInteractor {
     }
 
     private func setInitialProperties() {
-        homeViewModel.staticProperties = .init(title: "₿ All Coinz")
+        homeViewModel.staticProperties = .init(title: "₿ All Coinz", fallbackImageName: "UnknownCoin")
         homeViewModel.dynamicProperties.sortText = sortType.rawValue
     }
 }

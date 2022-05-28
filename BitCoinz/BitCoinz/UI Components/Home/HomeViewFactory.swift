@@ -15,7 +15,7 @@ enum HomeViewFactory {
     ) -> HomeView {
         let viewModel = HomeViewModel(
             dynamicProperties: .empty,
-            staticProperties: .init(title: "")
+            staticProperties: .init(title: "", fallbackImageName: "")
         )
         let interactor = HomeInteractor(
             coinProvider: coinProvider,

@@ -29,13 +29,16 @@ struct HomeView: View {
                         LazyVStack(alignment: .leading){
                             filterMenu
                                 .padding(.leading, 15)
-                                .foregroundColor(.white)
                             ForEach(viewModel.dynamicProperties.coins) { coin in
                                 NavigationLink {
                                     flowDelegate?.showDetails(for: coin)
                                 } label: {
-                                    CoinRow(coin: coin)
-                                        .padding(3)
+                                    CoinRow(
+                                        coin: coin,
+                                        fallbackImageName: viewModel.staticProperties.fallbackImageName
+                                    )
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 3)
                                 }.accessibilityIdentifier("coinRow")
                             }
                         }
@@ -50,7 +53,8 @@ struct HomeView: View {
     }
 
     var filterMenu: some View {
-        HStack {
+        HStack(spacing: 2) {
+            Text("Sorted by")
             Menu {
                 ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
@@ -60,10 +64,16 @@ struct HomeView: View {
                     }.accessibilityIdentifier("coinFilterOption")
                 }
             } label: {
-                Text("Sorted by " + viewModel.dynamicProperties.sortText)
+                Text(viewModel.dynamicProperties.sortText)
+                    .padding(.vertical, 3)
+                    .padding(.horizontal, 5)
+                    .foregroundColor(.black)
             }
+            .background { Color.white.opacity(0.75) }
+            .cornerRadius(5)
+            .accessibilityIdentifier("coinFilterMenu")
         }
-        .accessibilityIdentifier("coinFilterMenu")
+
     }
 }
 
@@ -73,7 +83,7 @@ struct HomeView_Previews: PreviewProvider {
             interactor: nil,
             viewModel: .init(
                 dynamicProperties: .init(coins: [], sortText: "Sort", errorMessage: "Error"),
-                staticProperties: .init(title: "App Title")
+                staticProperties: .init(title: "App Title", fallbackImageName: "UnknownCoin")
             )
         )
     }

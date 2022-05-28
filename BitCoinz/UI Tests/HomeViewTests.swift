@@ -18,16 +18,16 @@ class HomeViewTests: XCTestCase {
         app = XCUIApplication()
     }
 
-    func test_topBarContent() {
+    func test_headerContent() {
         // Expectation
-        let expectedAppTitle = "₿ Coinz App"
-        let expectedMenuLabel = "Price"
+        let expectedAppTitle = "₿ All Coinz"
+        let expectedMenuLabel = "Sorted by Price"
 
         // Action
         app.launch()
 
         // Assertion
-        XCTAssertEqual(app.staticTexts["appTitle"].label, expectedAppTitle)
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, expectedAppTitle)
         XCTAssertEqual(app.buttons["coinFilterMenu"].label, expectedMenuLabel)
     }
 
