@@ -20,7 +20,7 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 LinearGradient(
-                    colors: [Color("GradientStart"), Color("GradientEnd")],
+                    colors: [.gradientStart, .gradientEnd],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ).edgesIgnoringSafeArea(.all)
@@ -69,7 +69,7 @@ struct HomeView: View {
                     .padding(.horizontal, 5)
                     .foregroundColor(.black)
             }
-            .background { Color.white.opacity(0.75) }
+            .background { Color.elementBackground }
             .cornerRadius(5)
             .accessibilityIdentifier("coinFilterMenu")
         }

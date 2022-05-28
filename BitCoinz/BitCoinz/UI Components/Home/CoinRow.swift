@@ -18,25 +18,25 @@ struct CoinRow: View {
                 HStack {
                     Text(coin.name)
                         .font(.title2)
-                        .foregroundColor(.black)
+                        .foregroundColor(.text)
                     Text(coin.symbol)
-                        .foregroundColor(.black)
+                        .foregroundColor(.text)
                 }
                 HStack{
                     Text(coin.price)
-                        .foregroundColor(.black)
+                        .foregroundColor(.text)
                     Spacer()
                     Text(coin.change)
-                        .foregroundColor(.black)
+                        .foregroundColor(.text)
                 }
             }
             Image(systemName: "chevron.right")
                 .padding([.leading, .trailing], 10)
-                .foregroundColor(.black)
+                .foregroundColor(.text)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 4)
-        .background(Color("ElementBackground").opacity(0.75))
+        .background(Color.elementBackground.opacity(0.75))
         .cornerRadius(30)
         .shadow(radius: 16)
     }

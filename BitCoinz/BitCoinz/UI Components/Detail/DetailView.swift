@@ -12,25 +12,32 @@ struct DetailView: View {
     var interactor: DetailInteractable?
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Text("Coin: \(viewModel.staticProperties.symbol) - \(viewModel.staticProperties.name)")
-                    .font(.title)
-                Text("Price: \(viewModel.staticProperties.price)")
-                Text("History:")
-                    .font(.title)
-                    .padding(.vertical)
-                ForEach(viewModel.dynamicProperties.historyItems, id: \.self){ price in
-                    HStack{
-                        Text(price)
+        ZStack {
+            LinearGradient(
+                colors: [.gradientStart, .gradientEnd],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ).edgesIgnoringSafeArea(.all)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Price: \(viewModel.staticProperties.price)")
+                    Text("History:")
+                        .font(.title)
+                        .padding(.vertical)
+                    ForEach(viewModel.dynamicProperties.historyItems, id: \.self){ price in
+                        HStack{
+                            Text(price)
+                        }
+                        Divider()
                     }
-                    Divider()
+                    Spacer()
+                    HStack{ Spacer()}
                 }
-                Spacer()
-                HStack{ Spacer()}
+                .padding()
             }
-            .padding()
-        }.task {
+        }
+        .navigationTitle("\(viewModel.staticProperties.symbol) - \(viewModel.staticProperties.name)")
+        .task {
             interactor?.loadData()
         }
     }
