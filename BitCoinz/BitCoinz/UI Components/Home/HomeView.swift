@@ -18,24 +18,32 @@ struct HomeView: View {
 
     var body: some View {
         NavigationView {
-            HStack {
-                ScrollView(.vertical) {
-                    LazyVStack(alignment: .leading){
-                        filterMenu
-                            .padding(.leading, 15)
-                        ForEach(viewModel.dynamicProperties.coins) { coin in
-                            NavigationLink {
-                                flowDelegate?.showDetails(for: coin)
-                            } label: {
-                                CoinRow(coin: coin)
-                                    .padding(4)
-                            }.accessibilityIdentifier("coinRow")
+            ZStack {
+                LinearGradient(
+                    colors: [Color("GradientStart"), Color("GradientEnd")],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ).edgesIgnoringSafeArea(.all)
+                HStack {
+                    ScrollView(.vertical) {
+                        LazyVStack(alignment: .leading){
+                            filterMenu
+                                .padding(.leading, 15)
+                                .foregroundColor(.white)
+                            ForEach(viewModel.dynamicProperties.coins) { coin in
+                                NavigationLink {
+                                    flowDelegate?.showDetails(for: coin)
+                                } label: {
+                                    CoinRow(coin: coin)
+                                        .padding(3)
+                                }.accessibilityIdentifier("coinRow")
+                            }
                         }
                     }
                 }
+                .navigationTitle(viewModel.staticProperties.title)
+                .navigationBarTitleDisplayMode(.large)
             }
-            .navigationTitle(viewModel.staticProperties.title)
-            .navigationBarTitleDisplayMode(.large)
         }.task {
             interactor?.loadData()
         }

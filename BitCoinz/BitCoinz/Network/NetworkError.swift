@@ -9,7 +9,7 @@ import Foundation
 
 enum NetworkError: Error, CustomNSError {
     
-    case apiError
+    case apiError(String)
     case invalidEndpoint
     case invalidResponse
     case noData
@@ -17,7 +17,7 @@ enum NetworkError: Error, CustomNSError {
     
     var localizedDescription: String {
         switch self {
-        case .apiError: return "Failed to fetch data"
+        case .apiError(let message): return "Failed to fetch data: \(message)"
         case .invalidEndpoint: return "Invalid endpoint"
         case .invalidResponse: return "Invalid response"
         case .noData: return "No data"

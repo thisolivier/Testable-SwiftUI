@@ -20,7 +20,7 @@
 		090CD2BB283932CC007FDCDD /* DetailViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BA283932CC007FDCDD /* DetailViewFactory.swift */; };
 		090CD2BD283A2FC9007FDCDD /* HomeViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BC283A2FC9007FDCDD /* HomeViewFactoryTests.swift */; };
 		090CD2BF283BCFF1007FDCDD /* DetailViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BE283BCFF1007FDCDD /* DetailViewFactoryTests.swift */; };
-		090CD2C2283E5DD1007FDCDD /* Coin+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2C1283E5DD1007FDCDD /* Coin+Extensions.swift */; };
+		09B4C5CA284213BD0028F95D /* Coin+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */; };
 		09D7EDE928365B47005671CE /* CoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDE828365B47005671CE /* CoinRow.swift */; };
 		09D7EDEC28366341005671CE /* CoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDEB28366341005671CE /* CoinTests.swift */; };
 		09D7EDEE28366AED005671CE /* DetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDED28366AED005671CE /* DetailInteractorTests.swift */; };
@@ -72,7 +72,7 @@
 		090CD2BA283932CC007FDCDD /* DetailViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFactory.swift; sourceTree = "<group>"; };
 		090CD2BC283A2FC9007FDCDD /* HomeViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFactoryTests.swift; sourceTree = "<group>"; };
 		090CD2BE283BCFF1007FDCDD /* DetailViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFactoryTests.swift; sourceTree = "<group>"; };
-		090CD2C1283E5DD1007FDCDD /* Coin+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+Extensions.swift"; sourceTree = "<group>"; };
+		09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+Extensions.swift"; sourceTree = "<group>"; };
 		09D7EDE828365B47005671CE /* CoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRow.swift; sourceTree = "<group>"; };
 		09D7EDEB28366341005671CE /* CoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTests.swift; sourceTree = "<group>"; };
 		09D7EDED28366AED005671CE /* DetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorTests.swift; sourceTree = "<group>"; };
@@ -142,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				0903CDCA2837A492007F4521 /* View+Extensions.swift */,
+				09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -152,14 +153,6 @@
 				0903CDD62837CC71007F4521 /* HomeViewTests.swift */,
 			);
 			path = "UI Tests";
-			sourceTree = "<group>";
-		};
-		090CD2C0283E5DC6007FDCDD /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				090CD2C1283E5DD1007FDCDD /* Coin+Extensions.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		9437D8832778F24E006ECABA /* Coordinator */ = {
@@ -174,7 +167,6 @@
 		9437D88B2778FA26006ECABA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				090CD2C0283E5DC6007FDCDD /* Helper */,
 				0903CDC628379F66007F4521 /* Model */,
 				0903CDC528379F19007F4521 /* UI Components */,
 			);
@@ -441,7 +433,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				090CD2C2283E5DD1007FDCDD /* Coin+Extensions.swift in Sources */,
 				090CD2BF283BCFF1007FDCDD /* DetailViewFactoryTests.swift in Sources */,
 				09D7EDEC28366341005671CE /* CoinTests.swift in Sources */,
 				090CD2BD283A2FC9007FDCDD /* HomeViewFactoryTests.swift in Sources */,
@@ -454,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B4C5CA284213BD0028F95D /* Coin+Extensions.swift in Sources */,
 				0903CDCF2837AB37007F4521 /* Coordinatorable.swift in Sources */,
 				94B520002778D67800263604 /* NetworkError.swift in Sources */,
 				94B51FFE2778D64300263604 /* Coin.swift in Sources */,

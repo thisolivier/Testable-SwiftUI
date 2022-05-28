@@ -24,21 +24,28 @@ struct CoinRow: View {
                 }
             )
                 .padding()
-            VStack(spacing: 8) {
-                HStack {
-                    Text(coin.symbol)
-                    Spacer()
-                    Text(coin.price)
+            HStack() {
+                VStack(spacing: 8) {
+                    HStack {
+                        Text(coin.symbol)
+                            .foregroundColor(.purple)
+                        Spacer()
+                        Text(coin.price)
+                            .foregroundColor(.black)
+                    }
+                    HStack{
+                        Text(coin.name)
+                        Spacer()
+                        Text(coin.change)
+                    }
                 }
-                HStack{
-                    Text(coin.name)
-                    Spacer()
-                    Text(coin.change)
-                }
+                Image(systemName: "chevron.right")
+                    .padding([.leading, .trailing], 10)
             }
+
         }
         .padding(4)
-        .background(Color.gray.opacity(0.2))
+        .background(Color("ElementBackground"))
         .cornerRadius(6)
         .shadow(radius: 16)
     }

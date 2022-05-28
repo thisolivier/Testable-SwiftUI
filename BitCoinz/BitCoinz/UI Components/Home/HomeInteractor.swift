@@ -50,22 +50,27 @@ class HomeInteractor {
 
 extension HomeInteractor: HomeInteractable {
     func loadData() {
-        coinProvider.getCoins()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case let .failure(error):
-                    print(error.localizedDescription)
-                    self.homeViewModel.dynamicProperties.errorMessage = error.localizedDescription
+        let mock = false
+        if mock {
+            self.allCoins = (0..<100).map { _ in Coin.mockCoin }
+            sortData(with: sortType)
+        } else {
+            coinProvider.getCoins()
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case let .failure(error):
+                        print(error.localizedDescription)
+                        self.homeViewModel.dynamicProperties.errorMessage = error.localizedDescription
+                    }
+                } receiveValue: {[unowned self] coins in
+                    self.allCoins = coins
+                    sortData(with: sortType)
+                    coinPriceStore.save(data: allCoins)
                 }
-            } receiveValue: {[unowned self] coinsResponse in
-                print(coinsResponse.data.coins)
-                self.allCoins = coinsResponse.data.coins.map { Coin.fromDTO(dto: $0) }
-                sortData(with: sortType)
-                coinPriceStore.save(data: allCoins)
-            }
-            .store(in: &cancellables)
+                .store(in: &cancellables)
+        }
     }
 
     func sortData(with sortType: CoinSortType) {
