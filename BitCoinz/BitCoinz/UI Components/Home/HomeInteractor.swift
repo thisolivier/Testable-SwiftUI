@@ -78,7 +78,7 @@ extension HomeInteractor: HomeInteractable {
         self.homeViewModel.dynamicProperties.sortText = sortType.rawValue
         switch sortType {
         case .price:
-            self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.price.toDouble() > $1.price.toDouble() })
+            self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.price > $1.price })
         case .marketCap:
             self.homeViewModel.dynamicProperties.coins = allCoins.sorted(by: { $0.marketCap.toDouble() > $1.marketCap.toDouble() })
         case .change:

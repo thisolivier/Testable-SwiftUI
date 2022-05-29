@@ -18,5 +18,5 @@ struct DetailStaticProperties {
 }
 
 struct DetailDynamicProperties {
-    var historyItems: [String]
+    var historyItems: [(String, String)]
 }

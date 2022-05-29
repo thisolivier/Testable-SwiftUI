@@ -21,17 +21,18 @@ struct DetailView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     Text("Price: \(viewModel.staticProperties.price)")
-                    Text("History:")
+                    Text("History")
                         .font(.title)
                         .padding(.vertical)
-                    ForEach(viewModel.dynamicProperties.historyItems, id: \.self){ price in
+                    ForEach(viewModel.dynamicProperties.historyItems, id: \.self.0){ dateAndPrice in
                         HStack{
-                            Text(price)
+                            Text(dateAndPrice.0)
+                            Spacer()
+                            Text(dateAndPrice.1)
                         }
                         Divider()
                     }
                     Spacer()
-                    HStack{ Spacer()}
                 }
                 .padding()
             }
@@ -48,9 +49,10 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(
             viewModel: DetailViewModel(
                 dynamicProperties: .init(historyItems: [
-                    "Line One",
-                    "A very long line with lots and lots of text that won't fit on one line.",
-                    "111111122222223"
+                    ("11-11-2002", "$123456.54"),
+                    ("11-11-2003", "$12356.54"),
+                    ("11-11-2004", "$99912356.20"),
+                    ("11-11-2005", "$56.40")
                 ]),
                 staticProperties: .init(symbol: "$$$", name: "Trident Coin", price: "123.45")
             ),
@@ -58,14 +60,3 @@ struct DetailView_Previews: PreviewProvider {
         )
     }
 }
-
-let dummyCoin = Coin(
-    id: "1",
-    symbol: "1",
-    name: "1",
-    iconUrl: URL(string: "https://cdn.coinranking.com/yvUG4Qex5/solana.svg")!,
-    price: "1",
-    marketCap: "1",
-    change: "1",
-    listedAt: 1
-)

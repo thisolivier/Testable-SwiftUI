@@ -23,7 +23,7 @@ struct CoinRow: View {
                         .foregroundColor(.text)
                 }
                 HStack{
-                    Text(coin.price)
+                    Text(coin.formattedPrice)
                         .foregroundColor(.text)
                     Spacer()
                     Text(coin.change)

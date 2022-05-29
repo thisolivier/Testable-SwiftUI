@@ -12,8 +12,12 @@ struct Coin: Codable, Identifiable, Equatable {
     let symbol: String
     let name: String
     let iconUrl: URL?
-    let price: String
+    let price: Double
     let marketCap: String
     let change: String
     let listedAt: Double
+
+    var formattedPrice: String {
+        "$\(String(format:"%.2f", price))"
+    }
 }

@@ -20,15 +20,25 @@ class DetailInteractor {
         self.coinStore = coinStore
         self.coinId = coin.id
         self.viewModel = viewModel
-        viewModel.staticProperties = .init(symbol: coin.symbol, name: coin.name, price: coin.price)
+        viewModel.staticProperties = .init(
+            symbol: coin.symbol,
+            name: coin.name,
+            price: coin.formattedPrice
+        )
         loadData()
     }
 }
 
 extension DetailInteractor: DetailInteractable {
     func loadData() {
-        coinStore.retrieve(for: coinId) { [weak self] data in
-            self?.viewModel.dynamicProperties.historyItems = data
+        coinStore.retrieve(for: coinId) { [weak self] history in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy HH:mm"
+            self?.viewModel.dynamicProperties.historyItems = history.map { historyItem in
+                let dateString = formatter.string(from: historyItem.date)
+                let valueString = historyItem.coin.formattedPrice
+                return (dateString, valueString)
+            }
         }
     }
 }
