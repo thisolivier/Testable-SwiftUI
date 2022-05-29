@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol CoinProvidable {
-    func getCoins() -> AnyPublisher<CoinsResponse, NetworkError>
+    func getCoins() -> AnyPublisher<[Coin], Error>
 }
 
 class CoinProvider: CoinProvidable {
@@ -24,17 +24,19 @@ class CoinProvider: CoinProvidable {
         self.environment = environment
     }
     
-    func getCoins() -> AnyPublisher<CoinsResponse, NetworkError> {
+    func getCoins() -> AnyPublisher<[Coin], Error> {
         guard let url = getComponentsForCoinsRequest().url else {
-            return Fail<CoinsResponse, NetworkError>(error: .invalidEndpoint)
+            return Fail<[Coin], Error>(error: NetworkError.invalidEndpoint)
                 .eraseToAnyPublisher()
         }
         
-        let publisher: AnyPublisher<CoinsResponse, NetworkError> = networkExecutor.fetch(
-            url: url,
-            decoder: nil
-        )
-        return publisher.eraseToAnyPublisher()
+        return networkExecutor
+            .fetch(url: url, decoder: nil)
+            .map { (response: CoinsResponse) in
+                return response.data.coins.map { Coin.fromDTO(dto: $0) }
+            }
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
     }
 
     private func getComponentsForCoinsRequest() -> URLComponents{

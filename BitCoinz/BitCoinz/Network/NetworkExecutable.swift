@@ -40,7 +40,7 @@ enum NetworkExecutor: NetworkExecutable {
                 decoder: decoder ?? defaultDecoder
             )
             .receive(on: RunLoop.main)
-            .mapError{_ in return .apiError}
+            .mapError{ error in return .apiError(error.localizedDescription) }
             .eraseToAnyPublisher()
     }
 }

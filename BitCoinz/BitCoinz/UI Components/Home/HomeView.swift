@@ -12,37 +12,49 @@ protocol HomeFlowDelegate: AnyObject {
 }
 
 struct HomeView: View {
-    var interactor: HomePresentable?
+    var interactor: HomeInteractable?
     @ObservedObject var viewModel: ViewModelHolder<HomeStaticViewModel, HomeDynamicViewModel>
     weak var flowDelegate: HomeFlowDelegate?
 
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                LazyVStack{
-                    topBar.padding()
-                    ForEach(viewModel.dynamicProperties.coins) { coin in
-                        NavigationLink {
-                            flowDelegate?.showDetails(for: coin)
-                        } label: {
-                            CoinRow(coin: coin)
-                                .padding(4)
-                        }.accessibilityIdentifier("coinRow")
+            ZStack {
+                LinearGradient(
+                    colors: [.gradientStart, .gradientEnd],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ).edgesIgnoringSafeArea(.all)
+                HStack {
+                    ScrollView(.vertical) {
+                        LazyVStack(alignment: .leading){
+                            filterMenu
+                                .padding(.leading, 15)
+                            ForEach(viewModel.dynamicProperties.coins) { coin in
+                                NavigationLink {
+                                    flowDelegate?.showDetails(for: coin)
+                                } label: {
+                                    CoinRow(
+                                        coin: coin,
+                                        fallbackImageName: viewModel.staticProperties.fallbackImageName
+                                    )
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 3)
+                                }.accessibilityIdentifier("coinRow")
+                            }
+                        }
                     }
                 }
+                .navigationTitle(viewModel.staticProperties.title)
+                .navigationBarTitleDisplayMode(.large)
             }
-            .navigationBarHidden(true)
         }.task {
             interactor?.loadData()
         }
     }
 
-    var topBar: some View {
-        HStack {
-            Text(viewModel.staticProperties.title)
-                .font(.title)
-                .accessibilityIdentifier("appTitle")
-            Spacer()
+    var filterMenu: some View {
+        HStack(spacing: 2) {
+            Text("Sorted by")
             Menu {
                 ForEach(CoinSortType.allCases, id: \.self) { sortType in
                     Button {
@@ -53,9 +65,15 @@ struct HomeView: View {
                 }
             } label: {
                 Text(viewModel.dynamicProperties.sortText)
+                    .padding(.vertical, 3)
+                    .padding(.horizontal, 5)
+                    .foregroundColor(.black)
             }
+            .background { Color.elementBackground }
+            .cornerRadius(5)
             .accessibilityIdentifier("coinFilterMenu")
         }
+
     }
 }
 
@@ -65,7 +83,7 @@ struct HomeView_Previews: PreviewProvider {
             interactor: nil,
             viewModel: .init(
                 dynamicProperties: .init(coins: [], sortText: "Sort", errorMessage: "Error"),
-                staticProperties: .init(title: "App Title")
+                staticProperties: .init(title: "App Title", fallbackImageName: "UnknownCoin")
             )
         )
     }

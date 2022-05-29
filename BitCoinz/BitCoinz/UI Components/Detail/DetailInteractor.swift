@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailPresentable {
+protocol DetailInteractable {
     func loadData() -> ()
 }
 
@@ -25,7 +25,7 @@ class DetailInteractor {
     }
 }
 
-extension DetailInteractor: DetailPresentable {
+extension DetailInteractor: DetailInteractable {
     func loadData() {
         coinStore.retrieve(for: coinId) { [weak self] data in
             self?.viewModel.dynamicProperties.historyItems = data

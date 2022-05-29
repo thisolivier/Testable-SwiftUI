@@ -9,38 +9,55 @@ import SwiftUI
 
 struct CoinRow: View {
     let coin: Coin
+    let fallbackImageName: String
 
     var body: some View {
         HStack {
-            AsyncImage(
-                url: coin.iconUrl,
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 32, height: 32, alignment: .center)
-                },
-                placeholder: {
-                    ProgressView()
-                }
-            )
-                .padding()
-            VStack(spacing: 8) {
+            coinImage
+            VStack(alignment: .leading ,spacing: 4) {
                 HStack {
+                    Text(coin.name)
+                        .font(.title2)
+                        .foregroundColor(.text)
                     Text(coin.symbol)
-                    Spacer()
-                    Text(coin.price)
+                        .foregroundColor(.text)
                 }
                 HStack{
-                    Text(coin.name)
+                    Text(coin.price)
+                        .foregroundColor(.text)
                     Spacer()
                     Text(coin.change)
+                        .foregroundColor(.text)
                 }
             }
+            Image(systemName: "chevron.right")
+                .padding([.leading, .trailing], 10)
+                .foregroundColor(.text)
         }
-        .padding(4)
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(6)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
+        .background(Color.elementBackground.opacity(0.75))
+        .cornerRadius(30)
         .shadow(radius: 16)
+    }
+
+    var coinImage: some View {
+        AsyncImage(url: coin.iconUrl) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+            } else if phase.error != nil {
+                Image(fallbackImageName)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                ProgressView()
+            }
+        }
+        .frame(width: 30, height: 30)
+        .cornerRadius(5)
+        .padding([.leading, .trailing], 10)
     }
 }
 

@@ -13,7 +13,7 @@ import Combine
 // View has a weak reference to the ViewModelHolder
 // Communication flows one way, from View to Interactor to ViewModelHolder
 
-protocol HomePresentable {
+protocol HomeInteractable {
     func sortData(with: CoinSortType)
     func loadData()
 }
@@ -43,29 +43,34 @@ class HomeInteractor {
     }
 
     private func setInitialProperties() {
-        homeViewModel.staticProperties = .init(title: "₿ Coinz App")
+        homeViewModel.staticProperties = .init(title: "₿ All Coinz", fallbackImageName: "UnknownCoin")
         homeViewModel.dynamicProperties.sortText = sortType.rawValue
     }
 }
 
-extension HomeInteractor: HomePresentable {
+extension HomeInteractor: HomeInteractable {
     func loadData() {
-        coinProvider.getCoins()
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case let .failure(error):
-                    print(error.localizedDescription)
-                    self.homeViewModel.dynamicProperties.errorMessage = error.localizedDescription
+        let mock = false
+        if mock {
+            self.allCoins = (0..<100).map { _ in Coin.mockCoin }
+            sortData(with: sortType)
+        } else {
+            coinProvider.getCoins()
+                .sink { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case let .failure(error):
+                        print(error.localizedDescription)
+                        self.homeViewModel.dynamicProperties.errorMessage = error.localizedDescription
+                    }
+                } receiveValue: {[unowned self] coins in
+                    self.allCoins = coins
+                    sortData(with: sortType)
+                    coinPriceStore.save(data: allCoins)
                 }
-            } receiveValue: {[unowned self] coinsResponse in
-                print(coinsResponse.data.coins)
-                self.allCoins = coinsResponse.data.coins.map { Coin.fromDTO(dto: $0) }
-                sortData(with: sortType)
-                coinPriceStore.save(data: allCoins)
-            }
-            .store(in: &cancellables)
+                .store(in: &cancellables)
+        }
     }
 
     func sortData(with sortType: CoinSortType) {

@@ -11,6 +11,7 @@ typealias HomeViewModel = ViewModelHolder<HomeStaticViewModel, HomeDynamicViewMo
 
 struct HomeStaticViewModel {
     let title: String
+    let fallbackImageName: String
 }
 
 struct HomeDynamicViewModel {
