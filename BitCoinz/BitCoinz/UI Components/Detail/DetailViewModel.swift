@@ -19,4 +19,5 @@ struct DetailStaticProperties {
 
 struct DetailDynamicProperties {
     var historyItems: [(String, String)]
+    var graphData: [(Double, Date)]
 }

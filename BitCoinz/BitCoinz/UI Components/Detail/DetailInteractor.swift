@@ -33,12 +33,18 @@ extension DetailInteractor: DetailInteractable {
     func loadData() {
         coinStore.retrieve(for: coinId) { [weak self] history in
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy HH:mm"
-            self?.viewModel.dynamicProperties.historyItems = history.map { historyItem in
+            formatter.dateFormat = "dd-MM-yyyy HH:mm" // TODO: Test this formatting
+            let historyItems: [(String, String)] = history.map { historyItem in
                 let dateString = formatter.string(from: historyItem.date)
                 let valueString = historyItem.coin.formattedPrice
                 return (dateString, valueString)
             }
+            self?.viewModel.dynamicProperties = .init(
+                historyItems: historyItems,
+                graphData: history.map { item in
+                    return (item.coin.price, item.date)
+                }
+            )
         }
     }
 }

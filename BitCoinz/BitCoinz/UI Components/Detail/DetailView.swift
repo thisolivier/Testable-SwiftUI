@@ -24,8 +24,12 @@ struct DetailView: View {
                     Text("History")
                         .font(.title)
                         .padding(.vertical)
+                    if !viewModel.dynamicProperties.graphData.isEmpty {
+                        GraphView()
+                            .frame(height: 300)
+                    }
                     ForEach(viewModel.dynamicProperties.historyItems, id: \.self.0){ dateAndPrice in
-                        HStack{
+                        HStack {
                             Text(dateAndPrice.0)
                             Spacer()
                             Text(dateAndPrice.1)
@@ -48,12 +52,15 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(
             viewModel: DetailViewModel(
-                dynamicProperties: .init(historyItems: [
-                    ("11-11-2002", "$123456.54"),
-                    ("11-11-2003", "$12356.54"),
-                    ("11-11-2004", "$99912356.20"),
-                    ("11-11-2005", "$56.40")
-                ]),
+                dynamicProperties: .init(
+                    historyItems: [
+                        ("11-11-2002", "$123456.54"),
+                        ("11-11-2003", "$12356.54"),
+                        ("11-11-2004", "$99912356.20"),
+                        ("11-11-2005", "$56.40")
+                    ],
+                    graphData: []
+                ),
                 staticProperties: .init(symbol: "$$$", name: "Trident Coin", price: "123.45")
             ),
             interactor: nil

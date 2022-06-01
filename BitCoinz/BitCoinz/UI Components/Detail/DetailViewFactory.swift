@@ -14,7 +14,7 @@ enum DetailViewFactory {
         coinStore: CoinPriceStorable = CoinPriceStore()
     ) -> DetailView {
         let viewModel = DetailViewModel(
-            dynamicProperties: .init(historyItems: []),
+            dynamicProperties: .init(historyItems: [], graphData: []),
             staticProperties: .empty
         )
         let interactor = DetailInteractor(

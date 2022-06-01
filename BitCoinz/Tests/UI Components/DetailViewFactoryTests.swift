@@ -21,7 +21,7 @@ class DetailViewFactoryTests: XCTestCase {
         let testCoin = Coin.mockCoin
         let view = DetailViewFactory.makeDetailView(coin: testCoin)
         XCTAssertEqual(testCoin.name, view.viewModel.staticProperties.name)
-        XCTAssertEqual(testCoin.price, view.viewModel.staticProperties.price)
+        XCTAssertEqual(testCoin.formattedPrice, view.viewModel.staticProperties.price)
         XCTAssertEqual(testCoin.symbol, view.viewModel.staticProperties.symbol)
     }
 }

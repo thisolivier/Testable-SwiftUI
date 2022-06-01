@@ -30,6 +30,6 @@ class CoinTests: XCTestCase {
         XCTAssertEqual(sut.id, dto.uuid)
         XCTAssertEqual(sut.symbol, dto.symbol)
         XCTAssertEqual(sut.name, dto.name)
-        XCTAssertEqual(sut.price, "$ \(dto.price)")
+        XCTAssertEqual(sut.formattedPrice, "$\(dto.price)")
     }
 }

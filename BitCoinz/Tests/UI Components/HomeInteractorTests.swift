@@ -80,13 +80,14 @@ class HomeInteractorTests: XCTestCase {
 
 // MARK: - A mock coin store
 private class MockCoinStore: CoinPriceStorable {
+
     var coinsSaved: [Coin]?
 
     func save(data: [Coin]) {
         coinsSaved = data
     }
 
-    func retrieve(for uuid: String, completion: @escaping ([String]) -> Void) {
+    func retrieve(for uuid: String, completion: @escaping ([PersistentCoinData]) -> Void) {
         return // Not used in this test suite
     }
 }
