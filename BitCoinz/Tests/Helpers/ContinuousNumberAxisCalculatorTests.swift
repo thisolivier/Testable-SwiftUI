@@ -11,12 +11,13 @@ import XCTest
 class ContinuousNumberAxisCalculatorTests: XCTestCase {
     func test_outputRange() {
         let unit = Unit.dollar
-        let range = 20.0...998.0
+        let range = 180000.0...34000000.0
         let sut = ContinuousNumberAxisCalculator(range: range, units: unit)
-        let result300 = sut.axisFitting(in: 300) // Added one too many, extended range properly
-        let result200 = sut.axisFitting(in: 200) // Two data points, proper range
-        let result100 = sut.axisFitting(in: 100)
-        for item in [result100, result200, result300] {
+        let result10 = sut.axis(targetNumberIntervals: 10)
+        let result5 = sut.axis(targetNumberIntervals: 5)
+        let result3 = sut.axis(targetNumberIntervals: 3)
+        let result2 = sut.axis(targetNumberIntervals: 2)
+        for item in [result10, result5, result3, result2] {
             XCTAssertGreaterThan(item.points.count, 1)
         }
         print("Done")
