@@ -15,6 +15,8 @@ import SwiftUI
 struct GraphView: View {
     let calendar = Calendar.current
     let data: [(Double, Date)] = GraphView_Previews.mockData
+    let numberOfXAxisPoints: Int
+
     var scaleRange: ClosedRange<Double> {
         let doubles = data
             .map { $0.0 }
@@ -32,69 +34,59 @@ struct GraphView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            let outerWidth = Double(geometry.size.width)
-            let outerHeight = Double(geometry.size.height)
-            let numberOfXAxisPoints: Int = {
-                if outerWidth > 300 {
-                    return 6
-                } else if outerWidth > 250 {
-                    return 5
-                } else if outerWidth > 200 {
-                    return 4
-                } else {
-                    return 2
-                }
-            }()
-            VStack(spacing:0) {
-                HStack(spacing:0) {
-                    VStack {
-                        Text("$85K").frame(maxHeight: .infinity)
-                        Text("$80K").frame(maxHeight: .infinity)
-                        Text("$75K").frame(maxHeight: .infinity)
-                        Text("$70K").frame(maxHeight: .infinity)
-                        Text("$65K").frame(maxHeight: .infinity)
-                    }
-                    Rectangle()
-                        .frame(width: 2)
-                    GeometryReader { geometry in
-                        let width = Double(geometry.size.width)
-                        let height = Double(geometry.size.height)
-                        Path { path in
-                            path.move(to: CGPoint(
-                                x: 0,
-                                y: relativeYPosition(for: data.first?.0 ?? 0))
-                            )
-                            for datum in data {
-                                let interval =  datum.1.timeIntervalSinceReferenceDate - dateRange.start.timeIntervalSinceReferenceDate
-                                let x = 1 - Double(interval/totalInterval) * width
-                                let y = relativeYPosition(for: datum.0) * height
-                                print(x, y)
-                                path.addLine(to: CGPoint(
-                                    x: x,
-                                    y: y
-                                ))
-                            }
+        let axisGenerator = ContinuousNumberAxisCalculator(range: scaleRange, units: .dollar)
+        let axisPoints: AxisConfiguration<Double> = axisGenerator.axis(targetNumberIntervals: numberOfXAxisPoints)
+        let uiFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        VStack(spacing:0) {
+            HStack(spacing:0) {
+                GeometryReader { geometry in
+                    let height = geometry.size.height
+                    ZStack {
+                        ForEach(axisPoints.points, id: \.self) { point in
+                            Text(point.value)
+                                .offset(x: 0, y: height * (1 - point.position))
+                                .fixedSize()
                         }
-                        .stroke(
-                            Color.black,
-                            style: StrokeStyle(
-                                lineWidth: 2,
-                                lineCap: .round,
-                                lineJoin: .round
-                            )
-                        )
                     }
                 }
+                .frame(width: axisPoints.largestWidthOfLabel(using: uiFont) * 1.3)
                 Rectangle()
-                    .foregroundColor(.red)
-                    .frame(height: 10)
+                    .frame(width: 2)
+                GeometryReader { geometry in
+                    let width = Double(geometry.size.width)
+                    let height = Double(geometry.size.height)
+                    Path { path in
+                        path.move(to: CGPoint(
+                            x: 0,
+                            y: relativeYPosition(for: data.first?.0 ?? 0))
+                        )
+                        for datum in data {
+                            let interval =  datum.1.timeIntervalSinceReferenceDate - dateRange.start.timeIntervalSinceReferenceDate
+                            let x = 1 - Double(interval/totalInterval) * width
+                            let y = relativeYPosition(for: datum.0) * height
+                            print(x, y)
+                            path.addLine(to: CGPoint(
+                                x: x,
+                                y: y
+                            ))
+                        }
+                    }
+                    .stroke(
+                        Color.black,
+                        style: StrokeStyle(
+                            lineWidth: 2,
+                            lineCap: .round,
+                            lineJoin: .round
+                        )
+                    )
+                }
             }
-
-
+            Rectangle()
+                .foregroundColor(.red)
+                .frame(height: 10)
         }
-
     }
+
 
     private func relativeYPosition(
         for value: Double
@@ -130,6 +122,6 @@ struct GraphView_Previews: PreviewProvider {
     }()
 
     static var previews: some View {
-        return GraphView()
+        return GraphView(numberOfXAxisPoints: 5)
     }
 }

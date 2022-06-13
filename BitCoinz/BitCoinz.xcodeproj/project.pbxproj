@@ -20,11 +20,17 @@
 		090CD2BB283932CC007FDCDD /* DetailViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BA283932CC007FDCDD /* DetailViewFactory.swift */; };
 		090CD2BD283A2FC9007FDCDD /* HomeViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BC283A2FC9007FDCDD /* HomeViewFactoryTests.swift */; };
 		090CD2BF283BCFF1007FDCDD /* DetailViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CD2BE283BCFF1007FDCDD /* DetailViewFactoryTests.swift */; };
+		092EBFD5284FAD4C0089D4BB /* AxisConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFD4284FAD4C0089D4BB /* AxisConfiguration.swift */; };
+		092EBFD7284FAD8C0089D4BB /* GraphAxisCalculable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFD6284FAD8C0089D4BB /* GraphAxisCalculable.swift */; };
+		092EBFD9284FAF690089D4BB /* ContinuousNumberAxisCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFD8284FAF690089D4BB /* ContinuousNumberAxisCalculator.swift */; };
+		092EBFDB284FAF970089D4BB /* DateAxisCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFDA284FAF970089D4BB /* DateAxisCalculator.swift */; };
+		092EBFDD284FB11D0089D4BB /* DateInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFDC284FB11D0089D4BB /* DateInterval+Extensions.swift */; };
+		092EBFE0284FB2020089D4BB /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092EBFDF284FB2020089D4BB /* Date+Extensions.swift */; };
+		09A44CC128579106003472BB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A44CC028579106003472BB /* String+Extensions.swift */; };
 		09B4C5CA284213BD0028F95D /* Coin+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */; };
-		09B4C5D32842A05C0028F95D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4C5D22842A05C0028F95D /* Colors.swift */; };
+		09B4C5D32842A05C0028F95D /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4C5D22842A05C0028F95D /* Color+Extensions.swift */; };
 		09BD39752843D1D600D62177 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD39742843D1D600D62177 /* GraphView.swift */; };
 		09BD397728452C4D00D62177 /* GraphWithAxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD397628452C4D00D62177 /* GraphWithAxisView.swift */; };
-		09BD39792847A25000D62177 /* GraphAxisCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD39782847A25000D62177 /* GraphAxisCalculator.swift */; };
 		09BD397D2847B09500D62177 /* ContinuousNumberAxisCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BD397B2847B08400D62177 /* ContinuousNumberAxisCalculatorTests.swift */; };
 		09D7EDE928365B47005671CE /* CoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDE828365B47005671CE /* CoinRow.swift */; };
 		09D7EDEC28366341005671CE /* CoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D7EDEB28366341005671CE /* CoinTests.swift */; };
@@ -77,11 +83,17 @@
 		090CD2BA283932CC007FDCDD /* DetailViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFactory.swift; sourceTree = "<group>"; };
 		090CD2BC283A2FC9007FDCDD /* HomeViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFactoryTests.swift; sourceTree = "<group>"; };
 		090CD2BE283BCFF1007FDCDD /* DetailViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewFactoryTests.swift; sourceTree = "<group>"; };
+		092EBFD4284FAD4C0089D4BB /* AxisConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisConfiguration.swift; sourceTree = "<group>"; };
+		092EBFD6284FAD8C0089D4BB /* GraphAxisCalculable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphAxisCalculable.swift; sourceTree = "<group>"; };
+		092EBFD8284FAF690089D4BB /* ContinuousNumberAxisCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousNumberAxisCalculator.swift; sourceTree = "<group>"; };
+		092EBFDA284FAF970089D4BB /* DateAxisCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAxisCalculator.swift; sourceTree = "<group>"; };
+		092EBFDC284FB11D0089D4BB /* DateInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateInterval+Extensions.swift"; sourceTree = "<group>"; };
+		092EBFDF284FB2020089D4BB /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		09A44CC028579106003472BB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+Extensions.swift"; sourceTree = "<group>"; };
-		09B4C5D22842A05C0028F95D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		09B4C5D22842A05C0028F95D /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		09BD39742843D1D600D62177 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		09BD397628452C4D00D62177 /* GraphWithAxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphWithAxisView.swift; sourceTree = "<group>"; };
-		09BD39782847A25000D62177 /* GraphAxisCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphAxisCalculator.swift; sourceTree = "<group>"; };
 		09BD397B2847B08400D62177 /* ContinuousNumberAxisCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousNumberAxisCalculatorTests.swift; sourceTree = "<group>"; };
 		09D7EDE828365B47005671CE /* CoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRow.swift; sourceTree = "<group>"; };
 		09D7EDEB28366341005671CE /* CoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTests.swift; sourceTree = "<group>"; };
@@ -129,7 +141,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0903CDC528379F19007F4521 /* UI Components */ = {
+		0903CDC528379F19007F4521 /* UI ComponentsTests */ = {
 			isa = PBXGroup;
 			children = (
 				09D7EDED28366AED005671CE /* DetailInteractorTests.swift */,
@@ -137,24 +149,25 @@
 				9437D88C2778FA26006ECABA /* HomeInteractorTests.swift */,
 				090CD2BC283A2FC9007FDCDD /* HomeViewFactoryTests.swift */,
 			);
-			path = "UI Components";
+			path = "UI ComponentsTests";
 			sourceTree = "<group>";
 		};
-		0903CDC628379F66007F4521 /* Model */ = {
+		0903CDC628379F66007F4521 /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
 				09D7EDEB28366341005671CE /* CoinTests.swift */,
 			);
-			path = Model;
+			path = ModelTests;
 			sourceTree = "<group>";
 		};
 		0903CDC92837A47E007F4521 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				0903CDCA2837A492007F4521 /* View+Extensions.swift */,
+				092EBFDC284FB11D0089D4BB /* DateInterval+Extensions.swift */,
 				09B4C5C9284213BD0028F95D /* Coin+Extensions.swift */,
-				09B4C5D22842A05C0028F95D /* Colors.swift */,
-				09BD39782847A25000D62177 /* GraphAxisCalculator.swift */,
+				09B4C5D22842A05C0028F95D /* Color+Extensions.swift */,
+				09A44CC028579106003472BB /* String+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -167,6 +180,33 @@
 			path = "UI Tests";
 			sourceTree = "<group>";
 		};
+		092EBFD2284FACF10089D4BB /* OtherComponents */ = {
+			isa = PBXGroup;
+			children = (
+				092EBFD3284FAD080089D4BB /* GraphAxisCalculator */,
+			);
+			path = OtherComponents;
+			sourceTree = "<group>";
+		};
+		092EBFD3284FAD080089D4BB /* GraphAxisCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				092EBFD4284FAD4C0089D4BB /* AxisConfiguration.swift */,
+				092EBFD6284FAD8C0089D4BB /* GraphAxisCalculable.swift */,
+				092EBFD8284FAF690089D4BB /* ContinuousNumberAxisCalculator.swift */,
+				092EBFDA284FAF970089D4BB /* DateAxisCalculator.swift */,
+			);
+			path = GraphAxisCalculator;
+			sourceTree = "<group>";
+		};
+		092EBFDE284FB1E50089D4BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				092EBFDF284FB2020089D4BB /* Date+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		09BD39732843D14A00D62177 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,12 +216,12 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
-		09BD397A2847B06B00D62177 /* Helpers */ = {
+		09BD397A2847B06B00D62177 /* GraphAxisCalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
 				09BD397B2847B08400D62177 /* ContinuousNumberAxisCalculatorTests.swift */,
 			);
-			path = Helpers;
+			path = GraphAxisCalculatorTests;
 			sourceTree = "<group>";
 		};
 		9437D8832778F24E006ECABA /* Coordinator */ = {
@@ -196,9 +236,10 @@
 		9437D88B2778FA26006ECABA /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				09BD397A2847B06B00D62177 /* Helpers */,
-				0903CDC628379F66007F4521 /* Model */,
-				0903CDC528379F19007F4521 /* UI Components */,
+				092EBFDE284FB1E50089D4BB /* Helpers */,
+				09BD397A2847B06B00D62177 /* GraphAxisCalculatorTests */,
+				0903CDC628379F66007F4521 /* ModelTests */,
+				0903CDC528379F19007F4521 /* UI ComponentsTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -242,6 +283,7 @@
 				94B51FF02778D54400263604 /* Network */,
 				94B51FF12778D56500263604 /* UI Components */,
 				94B51FE52778D20F00263604 /* Assets.xcassets */,
+				092EBFD2284FACF10089D4BB /* OtherComponents */,
 				0903CDC92837A47E007F4521 /* Helpers */,
 				94B51FE72778D20F00263604 /* Preview Content */,
 			);
@@ -477,21 +519,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092EBFD7284FAD8C0089D4BB /* GraphAxisCalculable.swift in Sources */,
+				09A44CC128579106003472BB /* String+Extensions.swift in Sources */,
 				09BD39752843D1D600D62177 /* GraphView.swift in Sources */,
+				092EBFD9284FAF690089D4BB /* ContinuousNumberAxisCalculator.swift in Sources */,
 				09B4C5CA284213BD0028F95D /* Coin+Extensions.swift in Sources */,
 				0903CDCF2837AB37007F4521 /* Coordinatorable.swift in Sources */,
 				94B520002778D67800263604 /* NetworkError.swift in Sources */,
 				09BD397728452C4D00D62177 /* GraphWithAxisView.swift in Sources */,
 				94B51FFE2778D64300263604 /* Coin.swift in Sources */,
 				94B51FF52778D58C00263604 /* HomeView.swift in Sources */,
+				092EBFE0284FB2020089D4BB /* Date+Extensions.swift in Sources */,
 				9437D8802778EFE2006ECABA /* DetailView.swift in Sources */,
 				090CD2B928393061007FDCDD /* DetailInteractor.swift in Sources */,
 				090CD2BB283932CC007FDCDD /* DetailViewFactory.swift in Sources */,
 				090CD2B5283921D1007FDCDD /* ViewModelHolder.swift in Sources */,
-				09BD39792847A25000D62177 /* GraphAxisCalculator.swift in Sources */,
+				092EBFD5284FAD4C0089D4BB /* AxisConfiguration.swift in Sources */,
 				090CD2AC2837DAF1007FDCDD /* CoinSortType.swift in Sources */,
 				09D7EDE928365B47005671CE /* CoinRow.swift in Sources */,
-				09B4C5D32842A05C0028F95D /* Colors.swift in Sources */,
+				092EBFDB284FAF970089D4BB /* DateAxisCalculator.swift in Sources */,
+				09B4C5D32842A05C0028F95D /* Color+Extensions.swift in Sources */,
 				94B520022778D69700263604 /* CoinProvider.swift in Sources */,
 				94B51FE22778D20E00263604 /* BitCoinzApp.swift in Sources */,
 				9437D8852778F259006ECABA /* HomeCoordinator.swift in Sources */,
@@ -502,6 +549,7 @@
 				090CD2B728392717007FDCDD /* HomeViewModel.swift in Sources */,
 				94B51FF72778D5A000263604 /* HomeInteractor.swift in Sources */,
 				9437D895277901C2006ECABA /* CoinPriceStore.swift in Sources */,
+				092EBFDD284FB11D0089D4BB /* DateInterval+Extensions.swift in Sources */,
 				090CD2B128390AA5007FDCDD /* Environment.swift in Sources */,
 				090CD2B328391028007FDCDD /* HomeViewFactory.swift in Sources */,
 			);

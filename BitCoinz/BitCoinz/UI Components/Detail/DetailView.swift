@@ -25,7 +25,7 @@ struct DetailView: View {
                         .font(.title)
                         .padding(.vertical)
                     if !viewModel.dynamicProperties.graphData.isEmpty {
-                        GraphView()
+                        GraphView(numberOfXAxisPoints: 8)
                             .frame(height: 300)
                     }
                     ForEach(viewModel.dynamicProperties.historyItems, id: \.self.0){ dateAndPrice in

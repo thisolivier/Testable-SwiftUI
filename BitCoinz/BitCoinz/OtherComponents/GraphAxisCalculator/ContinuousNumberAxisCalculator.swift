@@ -1,12 +1,11 @@
 //
-//  GraphAxisCalculator.swift
+//  ContinuousNumberAxisCalculator.swift
 //  BitCoinz
 //
-//  Created by Olivier Butler on 01/06/2022.
+//  Created by Olivier Butler on 07/06/2022.
 //
 
 import Foundation
-import UIKit
 
 // Feature description
 // - Take a continuous range of values and calculate a discrete array of formatted values to display on the axis of a graph.
@@ -14,17 +13,8 @@ import UIKit
     // - E.g. the range is 2...98 and we want 5 intervals will result in 20,40,60,80 since 0 and 100 fall outside the given range.
 // - The calculator will force at least 2 labels to be returned (otherwise it is impossible to see scale from the axis). This may require the range to be extended, so the calculator will also return a range.
 
-struct AxisConfiguration {
-    var points: [AxisPoint]
-    var axisRange: ClosedRange<Double>
-}
 
-struct AxisPoint {
-    var position: Double
-    var value: String
-}
-
-struct ContinuousNumberAxisCalculator {
+struct ContinuousNumberAxisCalculator: GraphAxisCalculable {
     let range: ClosedRange<Double>
     let units: Unit
 
@@ -33,7 +23,7 @@ struct ContinuousNumberAxisCalculator {
         let startingPosition: Double
     }
 
-    func axis(targetNumberIntervals: Int) -> AxisConfiguration {
+    func axis(targetNumberIntervals: Int) -> AxisConfiguration<Double> {
         print("=======================")
         print("Range: \(range)")
         let intervalConfiguration = calculateIntervalSize(targetNumberIntervals)
@@ -75,9 +65,15 @@ struct ContinuousNumberAxisCalculator {
                 print("Added head")
             }
         }
+
+        // Here we normalize the return positions to be between 0 and 1, and transform their value to a printable string. #PresentationLogic
+        let varianceInValues = upperBound - lowerBound
         return AxisConfiguration(
-            points: outputPoints.map {
-                AxisPoint(position: $0, value: units.string(from: $0))
+            points: outputPoints.map { position in
+                AxisPoint(
+                    position: (position - lowerBound) / varianceInValues,
+                    value: units.string(from: position)
+                )
             },
             axisRange: lowerBound...upperBound
         )
